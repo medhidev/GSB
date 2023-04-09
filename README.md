@@ -19,5 +19,6 @@
 - Gestion du DNS du serveur
 - Hebergement et configuration sur un poste
 - Gestion des accès à distance
+- Ne sers à rien dans le groupe niveau réflexion
 
 `Compte rendu globale`
