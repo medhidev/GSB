@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Acceuil - GSB</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+</head>
+<header>
+
+</header>
+
+<body>
+  <form action="scripts/checkConnect.php" method="post">
+    <h2>Connexion à votre compte</h2>
+    <p>Identifiant</p>
+    <input type="text" name="identifiant">
+    <p>Mot de passe</p>
+    <input type="password" name="password">
+    <!-- <p>Type d'utilisateur</p> -->
+    <!-- <select name="typeUtilisateur" id="choix-utilisateur">
+      <option value="">--Choisissez un type d'utilisateur--</option>
+      <option value="visiteur">Visiteur</option>
+      <option value="comptable">Comptable</option>
+    </select> -->
+    <br>
+    <div class="boutons">
+      <input type="submit" name="send">
+      <input type="reset" name="clear">
+    </div>
+  </form>
+
+</body>
+
+</html>
