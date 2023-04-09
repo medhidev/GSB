@@ -4,7 +4,7 @@
 
 - Interface de connection
 - Amélioration des interfaces compta / utilisateur
-- Fais semblant de faire le chef
+- Fais semblant de faire le chef (le plus beau)
 
 ## Gestion BDD (Medhi)
 
@@ -14,7 +14,7 @@
 - Gestion des Accès à la BDD
 - Gère le cartel de la programmation
 
-## Hebergement & Configuration (Michael)
+## Hebergement & Configuration (Michael (judas))
 
 - Gestion du DNS du serveur
 - Hebergement et configuration sur un poste
