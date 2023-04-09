@@ -14,7 +14,7 @@
 - Gestion des Accès à la BDD
 - Gère le cartel de la programmation
 
-## Hebergement & Configuration (Michael (judas))
+## Hebergement & Configuration (Michael (Judas))
 
 - Gestion du DNS du serveur
 - Hebergement et configuration sur un poste
