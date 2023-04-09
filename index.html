@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Acceuil - GSB</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link href="index.js" />
+</head>
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg">
+  </div>
+
+</header>
+
+<body>
+  <!-- Création d'une balise "form" -->
+  <form action="scripts/connectionBDD.php" method="post">
+    <h2>Connexion à votre compte</h2>
+    <p>Identifiant</p>
+    <input type="text" name="identifiant">
+    <p>Mot de passe</p>
+    <!-- Input type "password" pour protéger la vue du mot de passe -->
+    <input type="password" name="password">
+    <label>
+      <div class="password-icon">
+        <i data-feather="eye"></i
+        <i data-feather="eye-off"></i> 
+      </div>
+    </label>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+    
+    <p>Type d'utilisateur</p>
+    <!--Création d'une liste à choix multiple pour que l'utilisateur accède à la bonne session -->
+    <select name="typeUtilisateur" id="choix-utilisateur">
+      <option value="">--Choisissez un type d'utilisateur--</option>
+      <option value="visiteur">Visiteur</option>
+      <option value="comptable">Comptable</option>
+    </select>
+    <br>
+    <!-- Boutons pour que l'utilisateur puisse se connecter ou supprimer les infos en cas d'erreur de frappe -->
+    <div class="boutons">
+      <input type="submit" name="send">
+      <input type="reset" name="clear">
+    </div>
+  </form>
+
+  <a href="formSaisieFrais.html">Accès temporaire</a>
+  <a href="formConsultFrais.html">Accès temporaire</a>
+  <a href="formValidFrais.html">Accès temporaire</a>
+</body>
+
+</html>
