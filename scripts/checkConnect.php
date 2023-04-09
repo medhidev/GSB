@@ -8,22 +8,25 @@
 
   // Requêtes SQL
   $request = "SELECT mdp FROM visiteur WHERE login ='$login'";
-  $result = $connect->query($request);
-  $ligne = $result->fetch();
+  $resultRequest = $connect->query($request);
+
+  //verification pour chaque ligne de la BDD 
+  $ligne = $resultRequest->fetch();
   
-  // Vérifie que si la ligne correspond ou non (booléen)
+  // Si l'utilisateur se trouve bien dans la BDD
   if($ligne != false){
     echo $login.'<br>'.$password;
 
-    //
-    if($ligne[''] == )
-    //page de redirection
-    header('filename="\formSaisieFrais.html"');
-
+    // Si l'utilsateur est un compte 'compta'
+    if($ligne['compta'] == 'OUI'){
+      //redirection vers la page compta
+    }
+    else{
+      //redirection vers la page user
+    }
   }
   else{
-    header('filename="\index.html"');
-    // echo "erreur d'enregistrement";
+    //retourner vers la page de départ
   }
 
   // if($_POST["typeUtilisateur"] == "visiteur"){
