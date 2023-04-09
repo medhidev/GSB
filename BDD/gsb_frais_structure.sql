@@ -137,11 +137,12 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
   FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
 
+/*AJOUT SUPPLEMENTAIRE AU POROJET*/
 
 -- Ajout de la colonne 
 ALTER TABLE visiteur
 ADD compta VARCHAR(3) DEFAULT NULL;
 
-INSERT INTO visiteur(compta)
-WHERE compta IS NULL
-VALUES();
+-- Insérer un utilisateur comptable dans la TABLE (utilisateur de test)
+INSERT INTO visiteur(id, login, mdp, compta)
+VALUES('g69', 'MedhiCompta', 'comptapass', 'OUI');
