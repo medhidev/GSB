@@ -11,6 +11,7 @@
 - Création et organisation des tables BDD
 - Script Js en cas d'erreur de connection 
 - Gestion des Accès à la BDD
+- Gère le cartel de la programmation
 
 ## Hebergement & Configuration (Michael)
 
