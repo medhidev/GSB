@@ -4,6 +4,7 @@
 
 - Interface de connection
 - Amélioration des interfaces compta / utilisateur
+- Fais semblant de faire le chef
 
 ## Gestion BDD (Medhi)
 
