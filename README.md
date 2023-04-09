@@ -20,5 +20,6 @@
 - Hebergement et configuration sur un poste
 - Gestion des accès à distance
 - Ne sers à rien dans le groupe niveau réflexion
+- il n'as pas confience en c'est camarade 
 
 `Compte rendu globale`
