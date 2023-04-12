@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
   FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
 
-/*AJOUT SUPPLEMENTAIRE AU POROJET*/
+/*AJOUT SUPPLEMENTAIRE AU PROJET*/
 
 -- Ajout de la colonne 
 ALTER TABLE visiteur
