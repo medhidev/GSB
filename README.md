@@ -4,9 +4,8 @@
 
 - Interface de connection
 - Amélioration des interfaces compta / utilisateur
-- Page erreur
-- Mot de passe oublier
-- Fais semblant de faire le chef (le plus beau)
+- En cas , ou l'utilisateur à des problèmes 
+- Est le chef (le plus beau)
 
 ## Gestion BDD (Medhi)
 
