@@ -149,16 +149,13 @@ VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmo
 
 -- Creations des comptes de la base de données
 CREATE USER 'MedhiGSB' IDENTIFIED BY 'adminpassword';
-CREATE USER 'MichealGSB' IDENTIFIED BY 'password';
-CREATE USER 'CiranGSB' IDENTIFIED BY 'password'
+CREATE USER 'MichaelGSB' IDENTIFIED BY 'password';
+CREATE USER 'CiranGSB' IDENTIFIED BY 'password';
 
 -- Creation des groupes
-CREATE GROUP 'GroupeAdmin'
+CREATE GROUP 'GroupeAdmin' WITH USER 'MedhiGSB';
 GRANT 'GroupeAdmin' TO 'MedhiGSB';
 GRANT ALL ON 'gsb' TO GROUP 'GroupeAdmin';
 
 CREATE GROUP 'GroupeGSB' WITH USER PUBLIC;
 GRANT SELECT, DELETE, INSERT, UPDATE ON 'visiteur' TO GROUP 'GroupeAdmin';
-
--- Ajout des comptes 
-INSERT
