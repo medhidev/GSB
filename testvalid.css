@@ -1,0 +1,67 @@
+/* Couleurs */
+body {
+  background-color: white;
+  color: #EE8855;
+}
+.zone {
+  color: #CC8855;
+}
+#gauche {
+  clear: left;
+  float: left;
+  width: 18%;
+  background-color: white;
+  height: 100%;
+}
+#coin {
+  height: 10%;
+  text-align: center;
+}
+#menu h2 {
+  margin-top: 0;
+}
+#droite {
+  float: left;
+  width: 80%;
+}
+#haut {
+  margin: 2px;
+  height: 10%;
+  float: left;
+}
+#bas {
+  margin: 10px 2px 2px 2px;
+  clear: left;
+  background-color: #EE8844;
+  color: white;
+  height: 88%;
+}
+.titre {
+  width: 180px;
+  clear: left;
+  float: left;
+}
+
+/* Tableaux */
+table {
+  border-collapse: collapse;
+}
+th {
+  background-color: #EE8855;
+  color: white;
+  font-weight: bold;
+  padding: 3px;
+  border: 1px solid black;
+}
+td {
+  background-color: white;
+  padding: 3px;
+  border: 1px solid black;
+}
+td input[type="text"] {
+  width: 50px;
+}
+td select {
+  width: 80px;
+  height: 60px;
+}

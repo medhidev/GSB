@@ -1,0 +1,103 @@
+body {
+  background-color: white;
+  color: #5599EE;
+}
+
+.titre {
+  width: 180px;
+  clear: left;
+  float: left;
+}
+
+.zone {
+  float: left;
+  color: #7091BB;
+}
+
+div[name="gauche"] {
+  clear: left;
+  float: left;
+  width: 18%;
+  background-color: white;
+  height: 100%;
+}
+
+div[name="coin"] {
+  height: 10%;
+  text-align: center;
+}
+
+div[name="menu"] h2 {
+  margin: 0;
+  padding: 0;
+}
+
+div[name="menu"] ul {
+  margin: 0;
+  padding: 0;
+}
+
+div[name="menu"] li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+div[name="menu"] li ul li a {
+  text-decoration: none;
+  color: #5599EE;
+}
+
+div[name="droite"] {
+  float: left;
+  width: 80%;
+}
+
+div[name="haut"] {
+  margin: 2px;
+  height: 10%;
+  float: left;
+}
+
+div[name="bas"] {
+  margin: 10px 2px 2px 2px;
+  clear: left;
+  background-color: #77AADD;
+  color: white;
+  height: 88%;
+}
+
+form[name="formConsultFrais"] {
+  margin: 0;
+}
+
+form[name="formConsultFrais"] h1 {
+  margin: 0;
+  padding: 0;
+}
+
+form[name="formConsultFrais"] .titre {
+  margin: 0;
+  padding: 0;
+}
+
+form[name="formConsultFrais"] .zone {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+th {
+  background-color: #5599EE;
+  color: white;
+}

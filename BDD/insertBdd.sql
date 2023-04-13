@@ -56,6 +56,3 @@ INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('f39', 'Frémont', 'Fernande', 'ffremont', 'xs5tq', '4 route de la mer', '13012', 'Allauh', '1998-10-01'),
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01');
 -- --------------------------------------------------------
-
-INSERT INTO visiteur (id, login, mdp, compta)
-VALUES('a151', 'medhi', 'password', 'OUI');

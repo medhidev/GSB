@@ -137,12 +137,28 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
   FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
 
-/*AJOUT SUPPLEMENTAIRE AU PROJET*/
+/*AJOUT COMPLEMENTAIRE AU PROJET*/
 
--- Ajout de la colonne 
+-- Ajout de la colonne compta
 ALTER TABLE visiteur
 ADD compta VARCHAR(3) DEFAULT NULL;
 
--- Insérer un utilisateur comptable dans la TABLE (utilisateur de test)
+-- Insertion des comptes GSB de connection (Formulaire)
 INSERT INTO visiteur(id, login, mdp, compta)
-VALUES('g69', 'MedhiCompta', 'comptapass', 'OUI');
+VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmoiCEMDP', 'OUI'), ('a103', 'MichaelGSB', '1CompteReseauNul', 'OUI');
+
+-- Creations des comptes de la base de données
+CREATE USER 'MedhiGSB' IDENTIFIED BY 'adminpassword';
+CREATE USER 'MichealGSB' IDENTIFIED BY 'password';
+CREATE USER 'CiranGSB' IDENTIFIED BY 'password'
+
+-- Creation des groupes
+CREATE GROUP 'GroupeAdmin'
+GRANT 'GroupeAdmin' TO 'MedhiGSB';
+GRANT ALL ON 'gsb' TO GROUP 'GroupeAdmin';
+
+CREATE GROUP 'GroupeGSB' WITH USER PUBLIC;
+GRANT SELECT, DELETE, INSERT, UPDATE ON 'visiteur' TO GROUP 'GroupeAdmin';
+
+-- Ajout des comptes 
+INSERT

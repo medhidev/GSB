@@ -1,19 +1,30 @@
+/*Pense à rajouter des commentaires pour expliquer ce que tu as fait pour les notes*/
+/*Ciran : je vais le faire*/
+
 header {
-  background-color: #4db6ea;
-  display: flex;
-  position: flex;
-  width: 100%;
-  margin: 15;
-  padding: 15;
-  margin-top: 3%
+    background-color: #84a5d0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 5%;
+}
+
+/* */
+header img{
+  width: 70px;
 }
 body {
-    margin: 0;
+    margin-top: 200px;
     padding: 0;
-    background-color: #c9daf8;
+    background-color: #c9daff;
     text-align: center;
-    margin-left: 3%;
-    margin-right: 3%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 nav {
     position: fixed;
@@ -45,12 +56,115 @@ nav {
     min-height: 100vh;}
 
 form {
-  border: solid 1px;
-  c
+  border: solid 0px;
+  background-color:#FFF;
+  margin-right: 40%;
+  margin-left: 40%;
+  padding-top : 1%;
+  padding-bottom:1%;
+  box-shadow: 5px 5px 5px grey; 
 }
+
 .boutons {
   margin-top: 50px;
 }
+
 input[type=submit] :hover {
   background-color: #FFF;
 }
+
+
+.form-submit-button {
+
+background: #B9DFFF;
+
+color: #fff;
+
+border: 1px solid #eee;
+
+border-radius: 20px;
+
+box-shadow: 5px 5px 5px #eee;
+
+text-shadow:none;
+
+}
+
+.form-submit-button:hover {
+
+background: #016ABC;
+
+color: #fff;
+
+border: 1px solid #eee;
+
+border-radius: 20px;
+
+box-shadow: 5px 5px 5px #eee;
+
+text-shadow:none;
+
+}
+
+label{
+  position: relative;
+}
+
+label input:focus {
+  border-color: #ff4754;
+}
+
+label .password-icon {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 20px;
+  color: #f9f9f9;
+  transition: all 0.2s;
+}
+
+label .password-icon:hover {
+  cursor: pointer;
+  color: #ff4754;
+}
+
+label .password-icon .feather-eye-off {
+  display: none;
+}
+
+label input {
+  font-size: 1em;
+  color: #f9f9f9;
+  background: transparent;
+  padding: 1rem 1.2rem;
+  width: 350px;
+  border-radius: 5px;
+  border: 2px solid #787373;
+  transition: all 0.2s;
+}
+
+logo{
+    margin-top: auto;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+}
+/*
+<style type="text/css">
+    <!-- body {background-color: white; color:5599EE; } 
+    .titre {
+      width: 180;
+      clear: left;
+      float: left;
+    }
+
+    .zone {
+      float: left;
+      color: 7091BB
+    }
+    -->
+  </style>
+*/
