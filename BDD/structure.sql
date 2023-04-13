@@ -155,7 +155,7 @@ CREATE USER 'CiranGSB' IDENTIFIED BY 'password';
 -- Creation des groupes
 CREATE GROUP 'GroupeAdmin' WITH USER 'MedhiGSB';
 GRANT 'GroupeAdmin' TO 'MedhiGSB';
-GRANT ALL ON 'gsb' TO GROUP 'GroupeAdmin';
+GRANT ALL ON * TO GROUP 'GroupeAdmin';
 
 CREATE GROUP 'GroupeGSB' WITH USER PUBLIC;
 GRANT SELECT, DELETE, INSERT, UPDATE ON 'visiteur' TO GROUP 'GroupeAdmin';
