@@ -148,14 +148,9 @@ INSERT INTO visiteur(id, login, mdp, compta)
 VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmoiCEMDP', 'OUI'), ('a103', 'MichaelGSB', '1CompteReseauNul', 'OUI');
 
 -- Creations des comptes de la base de données
-CREATE USER 'MedhiGSB' IDENTIFIED BY 'adminpassword';
-CREATE USER 'MichaelGSB' IDENTIFIED BY 'password';
-CREATE USER 'CiranGSB' IDENTIFIED BY 'password';
+CREATE USER AdminGSB IDENTIFIED BY 'adminpassword';
+CREATE USER userGSB IDENTIFIED BY 'gsbpassword';
 
--- Creation des groupes
-CREATE GROUP 'GroupeAdmin' WITH USER 'MedhiGSB';
-GRANT 'GroupeAdmin' TO 'MedhiGSB';
-GRANT ALL ON * TO GROUP 'GroupeAdmin';
-
-CREATE GROUP 'GroupeGSB' WITH USER PUBLIC;
-GRANT SELECT, DELETE, INSERT, UPDATE ON 'visiteur' TO GROUP 'GroupeAdmin';
+-- droit utilsateur BDD
+GRANT SELECT, DELETE, INSERT, UPDATE ON * TO AdminGSB;
+GRANT SELECT, DELETE, INSERT, UPDATE ON visiteur TO userGSB;

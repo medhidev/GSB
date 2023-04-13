@@ -4,7 +4,7 @@
   <link href="test.css">
   <title>Suivi des frais de visite</title>
   <style type="text/css">
-    <!-- body {background-color: white; color:5599EE; } 
+    body {background-color: white; color:5599EE; } 
     .titre {
       width: 180;
       clear: left;
@@ -15,12 +15,12 @@
       float: left;
       color: 7091BB
     }
-    -->
+
   </style>
 </head>
 
 <body>
-  <div name="gauche" style="clear:left:;float:left;width:18%; background-color:white; height:100%;">
+  <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
     <div name="coin" style="height:10%;text-align:center;"><img src="images/logo.jpg" width="100" height="60" /></div>
     <div name="menu">
       <h2>Outils</h2>
@@ -39,51 +39,51 @@
     </div>
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
       <form name="formConsultFrais" method="post" action="chercheFrais.php">
-        <h1> P�riode </h1>
-        <label class="titre">Mois/Ann�e :</label> <input class="zone" type="text" name="dateConsult" size="12" />
-        <p class="titre" />
+        <h1> Periode </h1>
+        <label class="titre">Mois/Annee :</label> <input class="zone" type="text" name="dateConsult" size="12" />
+        <p class="titre">
         <div style="clear:left;">
           <h2>Frais au forfait </h2>
         </div>
-        <table style="color:white;" border="1">
+        <table style="color:white; border:1">
           <tr>
             <th>Repas midi</th>
-            <th>Nuit�e </th>
+            <th>Nuitee </th>
             <th>Etape</th>
             <th>Km </th>
             <th>Situation</th>
-            <th>Date op�ration</th>
+            <th>Date operation</th>
             <th>Remboursement</th>
           </tr>
-          <tr align="center">
-            <td width="80"><label size="3" name="repas" /></td>
-            <td width="80"><label size="3" name="nuitee" /></td>
-            <td width="80"> <label size="3" name="etape" /></td>
-            <td width="80"> <label size="3" name="km" /></td>
-            <td width="80"> <label size="3" name="situation" /></td>
-            <td width="80"> <label size="3" name="dateOper" /></td>
-            <td width="80"> <label size="3" name="dateOper" /></td>
+          <tr text-align="center">
+            <td width="80"><label size="3" name="repas"></td>
+            <td width="80"><label size="3" name="nuitee"></td>
+            <td width="80"> <label size="3" name="etape"></td>
+            <td width="80"> <label size="3" name="km"></td>
+            <td width="80"> <label size="3" name="situation"></td>
+            <td width="80"> <label size="3" name="dateOper"></td>
+            <td width="80"> <label size="3" name="dateOper"></td>
           </tr>
         </table>
 
-        <p class="titre" />
+        <p class="titre">
         <div style="clear:left;">
           <h2>Hors Forfait</h2>
         </div>
-        <table style="color:white;" border="1">
+        <table style="color:white; border:1">
           <tr>
             <th>Date</th>
-            <th>Libell� </th>
+            <th>Libelle </th>
             <th>Montant</th>
             <th>Situation</th>
-            <th>Date op�ration</th>
+            <th>Date operation</th>
           </tr>
-          <tr align="center">
-            <td width="100"><label size="12" name="hfDate1" /></td>
-            <td width="220"><label size="30" name="hfLib1" /></td>
-            <td width="90"><label size="10" name="hfMont1" /></td>
-            <td width="80"> <label size="3" name="hfSitu1" /></td>
-            <td width="80"> <label size="3" name="hfDateOper1" /></td>
+          <tr text-align="center">
+            <td width="100"><label size="12" name="hfDate1"></td>
+            <td width="220"><label size="30" name="hfLib1"></td>
+            <td width="90"><label size="10" name="hfMont1"></td>
+            <td width="80"> <label size="3" name="hfSitu1"></td>
+            <td width="80"> <label size="3" name="hfDateOper1"></td>
           </tr>
         </table>
         <p class="titre"></p>

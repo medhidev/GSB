@@ -25,7 +25,7 @@
     }
     else{
       //redirection vers la page user
-      header('Location: ../formSaisieFrais.html');
+      header('Location: ../formSaisieFrais.php');
     }
   }
   else{

@@ -12,25 +12,26 @@
 Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
 
 > Compte pour les comptables & Admin (même que BDD pour les tests)*
-> Login: *MedhiGSB*
-> Mdp: *1mot2passCQRtkt*
+- Login: *MedhiGSB*
+- Mdp: *1mot2passCQRtkt*
 
-> Login: *CiranGSB*
-> Mdp: *CAmoiCEMDP*
+- Login: *CiranGSB*
+- Mdp: *CAmoiCEMDP*
 
-> Login *MichaelGSB*
-> Mdp: *1CompteReseauNul*
+- Login *MichaelGSB*
+- Mdp: *1CompteReseauNul*
 
 > Gestion des droits & Accès à la BDD (SQL) ■
+
 ### Comptes d'accès Base de données
 
 __GroupeAdmin toutes les tables__
-> Utilisateur: MedhiGSB
-> Droits: *ALL*
+- Utilisateur: MedhiGSB
+- Droits: *ALL*
 
 __GroupGSB gsb__
-> Utilisateur: PUBLIC
-> Droits: *INSERT, SELECT, UPDATE, DELETE*
+- Utilisateur: PUBLIC
+- Droits: *INSERT, SELECT, UPDATE, DELETE*
 
 > Script de verification de Mdp & les messages qui vont avec (Js) ■
 > Liaison des pages entres elles (faire shéma si nécessaire) (HTML) ■
