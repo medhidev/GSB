@@ -55,4 +55,16 @@ INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('f21', 'Finck', 'Jacques', 'jfinck', 'mpb3t', '10 avenue du Prado', '13002', 'Marseille', '2001-11-10'),
 ('f39', 'Frémont', 'Fernande', 'ffremont', 'xs5tq', '4 route de la mer', '13012', 'Allauh', '1998-10-01'),
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01');
--- --------------------------------------------------------
+----------------------------------------------------------
+
+-- Insertion des comptes GSB de connection (Formulaire)
+INSERT INTO visiteur(id, login, mdp, compta)
+VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmoiCEMDP', 'OUI'), ('a103', 'MichaelGSB', '1CompteReseauNul', 'OUI');
+
+-- Creations des comptes de la base de données
+CREATE USER AdminGSB IDENTIFIED BY 'adminpassword';
+CREATE USER userGSB IDENTIFIED BY 'gsbpassword';
+
+-- droit utilsateur BDD
+GRANT SELECT, DELETE, INSERT, UPDATE ON * TO AdminGSB;
+GRANT SELECT, DELETE, INSERT, UPDATE ON visiteur TO userGSB;

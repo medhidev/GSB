@@ -142,15 +142,3 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
 -- Ajout de la colonne compta
 ALTER TABLE visiteur
 ADD compta VARCHAR(3) DEFAULT NULL;
-
--- Insertion des comptes GSB de connection (Formulaire)
-INSERT INTO visiteur(id, login, mdp, compta)
-VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmoiCEMDP', 'OUI'), ('a103', 'MichaelGSB', '1CompteReseauNul', 'OUI');
-
--- Creations des comptes de la base de données
-CREATE USER AdminGSB IDENTIFIED BY 'adminpassword';
-CREATE USER userGSB IDENTIFIED BY 'gsbpassword';
-
--- droit utilsateur BDD
-GRANT SELECT, DELETE, INSERT, UPDATE ON * TO AdminGSB;
-GRANT SELECT, DELETE, INSERT, UPDATE ON visiteur TO userGSB;
