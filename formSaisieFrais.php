@@ -4,15 +4,16 @@
   <link href="styles/formsaisieFrais.css" >
   <title>Gestion des frais de visite</title>
   <script language="javascript">
-    function ajoutLigne(pNumero) {//ajoute une ligne de produits/qt� � la div "lignes"     
+    function ajoutLigne(pNumero) {//ajoute une ligne de produits/qte a la div "lignes"     
       //masque le bouton en cours
       document.getElementById("but" + pNumero).setAttribute("hidden", "true");
-      pNumero++;										//incr�mente le num�ro de ligne
-      var laDiv = document.getElementById("lignes");	//r�cup�re l'objet DOM qui contient les donn�es
-      var titre = document.createElement("label");	//cr�e un label
-      laDiv.appendChild(titre);						//l'ajoute � la DIV
-      titre.setAttribute("class", "titre");			//d�finit les propri�t�s
+      pNumero++;										//incremente le numero de ligne
+      var laDiv = document.getElementById("lignes");	//recupere l'objet DOM qui contient les donnees
+      var titre = document.createElement("label");	//cree un label
+      laDiv.appendChild(titre);						//l'ajoute a la DIV
+      titre.setAttribute("class", "titre");			//definit les proprietes
       titre.innerHTML = "   " + pNumero + " : ";
+
       //zone our la date du frais
       var ladate = document.createElement("input");
       laDiv.appendChild(ladate);
@@ -20,13 +21,15 @@
       ladate.setAttribute("size", "12");
       ladate.setAttribute("class", "zone");
       ladate.setAttribute("type", "text");
-      //zone de saisie pour un nouveau libell�			
+
+      //zone de saisie pour un nouveau libelle			
       var libelle = document.createElement("input");
       laDiv.appendChild(libelle);
       libelle.setAttribute("name", "FRA_AUT_LIB" + pNumero);
       libelle.setAttribute("size", "30");
       libelle.setAttribute("class", "zone");
       libelle.setAttribute("type", "text");
+
       //zone de saisie pour un nouveau montant		
       var mont = document.createElement("input");
       laDiv.appendChild(mont);
@@ -36,7 +39,7 @@
       mont.setAttribute("type", "text");
       var bouton = document.createElement("input");
       laDiv.appendChild(bouton);
-      //ajoute une gestion �venementielle en faisant �voluer le num�ro de la ligne
+      //ajoute une gestion evenementielle en faisant evoluer le numero de la ligne
       bouton.setAttribute("onClick", "ajoutLigne(" + pNumero + ");");
       bouton.setAttribute("type", "button");
       bouton.setAttribute("value", "+");
@@ -52,8 +55,9 @@
 
 <body>
   <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
-    <div name="coin" style="height:10%;margin-top: 50px;"><img src="images/image-removebg-preview.png" width="100"
-        height="60" /></div>
+    <div name="coin" style="height:10%;margin-top: 50px;">
+      <a href="index.html"><img src="images/logo.jpg" width="100" height="60"></a>
+    </div>
     <div name="menu">
       <h2>Outils</h2>
       <ul>
