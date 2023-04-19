@@ -141,4 +141,8 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
 
 -- Ajout de la colonne compta
 ALTER TABLE visiteur
+<<<<<<< HEAD
 ADD compta VARCHAR(3) DEFAULT NULL;
+=======
+ADD compta VARCHAR(3) DEFAULT NULL;
+>>>>>>> 46f446075c1e07cf27bacc07929ca7e49e6f9064
