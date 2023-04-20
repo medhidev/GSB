@@ -1,9 +1,9 @@
 <?php
-    // Config BDD
+    // Données de la BDD - Sécurité des tables avec le compte UserGSB
   $host = "localhost";
   $nomBdd = "gsb";
-  $login = "root";
-  $passwordBdd = "";
+  $login = "UserGSB";
+  $passwordBdd = "gsbpassword";
 
   // Connection BDD
   try {

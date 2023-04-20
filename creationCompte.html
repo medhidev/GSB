@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html> 
+
+<!-- Librairies & Metadata -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Acceuil | GSB</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="images/gsb.png" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/7aec2fa477.js" crossorigin="anonymous"></script>
+  <script src="Js/main.js"></script>
+</head>
+
+<body>
+  <!-- Création d'une balise "form" -->
+  <form action="#" method="post" onsubmit="emptyField()">
+    <h2>Creation de votre compte</h2>
+    <p>
+      <input type="text" name="nom" id="nom" placeholder="Nom">
+      <input type="text" name="prenom" id="prenom" placeholder="Prenom">
+      <textarea name="adress" id="adress" cols="25" rows="5" placeholder="Adresse Utilisateur"></textarea>
+      <input type="text" name="cp" id="cp" placeholder="code postale"><br><br>
+      <input type="date" name="date" id="date">
+    </p>
+    <p>
+      <input type="text" name="login" id="login" placeholder="Login">
+    </p>
+    <p>
+      <input type="password" name="password" id="password" placeholder="Mot de passe">
+    </p>
+
+    <a href="index.html" style="text-decoration: none; font-size: 15px;">retour a la page de connection</a>
+
+    <div class="boutons">
+      <input type="submit" name="send" value="Creer" style="background-color: #FFC433;">
+      <input type="reset" name="clear" value="Annuler">
+    </div>
+  </form>
+
+</body>
+</html>

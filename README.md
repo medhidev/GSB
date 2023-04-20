@@ -2,25 +2,45 @@
 
 ## Interface Userfriendly (Ciran)
 
-- Interface de connection
-- Amélioration des interfaces compta / utilisateur
-- En cas , ou l'utilisateur à des problèmes 
-- Est le chef (le plus beau)
+* Harmoniser l'Interface de connection (CSS)
+* Amélioration des interfaces compta / utilisateur (CSS/HTML)
 
-## Gestion BDD (Medhi)
+## TODO Gestion BDD (Medhi)
 
-- Script de verfification d'identitée
-- Création et organisation des tables BDD
-- Script Js en cas d'erreur de connection 
-- Gestion des Accès à la BDD
-- Gère le cartel de la programmation
+* Script de verfification d'identitée (PHP)
+### Comptes de connection
+Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
+
+* Compte pour les comptables & Admin (même que BDD pour les tests)*
+> Login: *MedhiGSB*
+> Mdp: *1mot2passCQRtkt*
+
+> Login: *CiranGSB*
+> Mdp: *CAmoiCEMDP*
+
+> Login *MichaelGSB*
+> Mdp: *1CompteReseauNul*
+
+* Gestion des droits & Accès à la BDD (SQL)
+
+### Comptes d'accès Base de données
+
+__Utilisateur AdminGSB - Accès toutes les tables__
+> Utilisateur: *AdminGSB*
+> Mdp: *adminpassword*
+> Droits: *INSERT, SELECT, UPDATE, DELETE*
+
+__Utilisateur UserGSB - Accès table visiteur__
+> Utilisateur: *UserGSB*
+> Mdp: *gsbpassword*
+> Droits: *INSERT, SELECT, UPDATE, DELETE*
+
+* Script de verification de Mdp & les messages qui vont avec (Js)
+* Liaison des pages entres elles (faire shéma si nécessaire) (HTML)
+* (Faire un script de récupération des données d'utilisateur)
 
 ## Hebergement & Configuration (Michael (Judas))
 
-- Gestion du DNS du serveur
-- Hebergement et configuration sur un poste
-- Gestion des accès à distance
-- Ne sers à rien dans le groupe niveau réflexion
-- il n'as pas confience en c'est camarade 
-
-`Compte rendu globale`
+* Gestion du DNS du serveur
+* Hebergement et configuration sur un poste
+* Gestion des accès à distance

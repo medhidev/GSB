@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html> 
 
+<!-- Librairies & Metadata -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Acceuil - GSB</title>
+  <title>Acceuil | GSB</title>
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
-  <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+  <link rel="shortcut icon" href="images/gsb.png" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/7aec2fa477.js" crossorigin="anonymous"></script>
+  <script src="Js/main.js"></script>
 </head>
-<header>
-
-</header>
 
 <body>
-  <form action="scripts/checkConnect.php" method="post">
+  <!-- Création d'une balise "form" -->
+  <form action="PHP/verifConnect.php" method="post" onsubmit="emptyField()">
     <h2>Connexion à votre compte</h2>
-    <p>Identifiant</p>
-    <input type="text" name="identifiant">
+    <p>Login</p>
+    <input type="text" name="identifiant" id="login">
     <p>Mot de passe</p>
-    <input type="password" name="password">
-    <!-- <p>Type d'utilisateur</p> -->
-    <!-- <select name="typeUtilisateur" id="choix-utilisateur">
-      <option value="">--Choisissez un type d'utilisateur--</option>
-      <option value="visiteur">Visiteur</option>
-      <option value="comptable">Comptable</option>
-    </select> -->
+    <!-- Input type "password" pour protéger la vue du mot de passe -->
+    <input type="password" name="password" id="password">
+    <label>
+      <div class="password-icon">
+        <i data-feather="eye"></i>
+        <i data-feather="eye-off"></i> 
+        <span id="eye" onclick="togglePasswordVisibility()">
+          <i class="fa fa-eye-slash"></i>
+        </span>
+      </div>
+    </label>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
     <br>
+
+    <!-- Création d'un compte -->
+    <a href="creationCompte.html" style="text-decoration: none; font-size: 12px;">creer un compte</a>
+
     <div class="boutons">
       <input type="submit" name="send">
       <input type="reset" name="clear">
@@ -33,5 +46,4 @@
   </form>
 
 </body>
-
 </html>
