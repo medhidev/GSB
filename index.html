@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html> 
 
-<!-- Library & Metadata -->
+<!-- Librairies & Metadata -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -9,24 +9,12 @@
   <link href="styles/style.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="images/gsb.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/7aec2fa477.js" crossorigin="anonymous"></script>
-  <script src="scripts/main.js"></script>
+  <script src="Js/main.js"></script>
 </head>
-
-<!-- Nav Bar -->
-<!-- <header>
-  <navbar class="navbar">
-    <img src="images/gsb.png">
-
-    Ajout d'un boutton de creation de compte
-
-  </navbar>
-
-
-</header> -->
 
 <body>
   <!-- Création d'une balise "form" -->
-  <form action="scripts/checkConnect.php" method="post" onsubmit="emptyField()">
+  <form action="PHP/verifConnect.php" method="post" onsubmit="emptyField()">
     <h2>Connexion à votre compte</h2>
     <p>Login</p>
     <input type="text" name="identifiant" id="login">
@@ -47,8 +35,9 @@
       feather.replace();
     </script>
     <br>
-    <!-- Boutons pour que l'utilisateur puisse se connecter ou supprimer les infos en cas d'erreur de frappe -->
-    <a href="erreur.html" style="text-decoration: none; font-size: 12px;">mot de passe oublie</a>
+
+    <!-- Création d'un compte -->
+    <a href="creationCompte.html" style="text-decoration: none; font-size: 12px;">creer un compte</a>
 
     <div class="boutons">
       <input type="submit" name="send">
@@ -57,5 +46,4 @@
   </form>
 
 </body>
-
 </html>

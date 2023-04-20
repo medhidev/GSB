@@ -1,3 +1,5 @@
+/* Script pour visualiser sont mot de passe */
+
 const eye = document.querySelector(".feather-eye");
 const eyeoff = document.querySelector(".feather-eye-off");
 const passwordField = document.querySelector("input[type=password]");
@@ -30,7 +32,8 @@ function togglePasswordVisibility() {
   }
 }
 
-// Verifie si un champ est vide ( à améliorer)
+/* Verification si le champ du formulaire est vide (amelioration pour éviter de refresh la page) */
+
 function emptyField(event){
 
   var login = document.getElementById("login").value;

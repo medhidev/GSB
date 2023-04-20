@@ -4,7 +4,8 @@
   <link href="styles/formsaisieFrais.css" >
   <title>Gestion des frais de visite</title>
   <script language="javascript">
-    function ajoutLigne(pNumero) {//ajoute une ligne de produits/qte a la div "lignes"     
+    function ajoutLigne(pNumero) {
+      //ajoute une ligne de produits/qte a la div "lignes"     
       //masque le bouton en cours
       document.getElementById("but" + pNumero).setAttribute("hidden", "true");
       pNumero++;										//incremente le numero de ligne

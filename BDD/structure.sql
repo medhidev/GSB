@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
   `cp` char(5) DEFAULT NULL,
   `ville` char(30) DEFAULT NULL,
   `dateEmbauche` date DEFAULT NULL,
+  `compta` VARCHAR(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -136,13 +137,3 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
   PRIMARY KEY (id),
   FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
-
-/*AJOUT COMPLEMENTAIRE A LA STRUCTURE*/
-
--- Ajout de la colonne compta
-ALTER TABLE visiteur
-<<<<<<< HEAD
-ADD compta VARCHAR(3) DEFAULT NULL;
-=======
-ADD compta VARCHAR(3) DEFAULT NULL;
->>>>>>> 46f446075c1e07cf27bacc07929ca7e49e6f9064
