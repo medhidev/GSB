@@ -7,7 +7,8 @@
 
 ## TODO Gestion BDD (Medhi)
 
-* Script de verfification d'identitée (PHP) ■
+<<<<<<< HEAD
+* Script de verfification d'identitée (PHP)
 ### Comptes de connection
 Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
 
@@ -21,7 +22,7 @@ Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
 > Login *MichaelGSB*
 > Mdp: *1CompteReseauNul*
 
-* Gestion des droits & Accès à la BDD (SQL) ■
+* Gestion des droits & Accès à la BDD (SQL)
 
 ### Comptes d'accès Base de données
 
@@ -35,11 +36,11 @@ __Utilisateur UserGSB - Accès table visiteur__
 > Mdp: *gsbpassword*
 > Droits: *INSERT, SELECT, UPDATE, DELETE*
 
-* Script de verification de Mdp & les messages qui vont avec (Js) ■
-* Liaison des pages entres elles (faire shéma si nécessaire) (HTML) ■
-* (Faire un script de récupération des données d'utilisateur) ■
+* Script de verification de Mdp & les messages qui vont avec (Js)
+* Liaison des pages entres elles (faire shéma si nécessaire) (HTML)
+* (Faire un script de récupération des données d'utilisateur)
 
-## Hebergement & Configuration (Michael)
+## Hebergement & Configuration (Michael (Judas))
 
 * Gestion du DNS du serveur
 * Hebergement et configuration sur un poste
