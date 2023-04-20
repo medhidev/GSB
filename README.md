@@ -7,7 +7,6 @@
 
 ## TODO Gestion BDD (Medhi)
 
-<<<<<<< HEAD
 * Script de verfification d'identitée (PHP)
 ### Comptes de connection
 Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
