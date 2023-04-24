@@ -32,8 +32,7 @@ function togglePasswordVisibility() {
   }
 }
 
-/* Verification si le champ du formulaire est vide (amelioration pour éviter de refresh la page) */
-
+/*VERIFICATION FORMULAIRE CONNECTION*/
 function emptyField(event){
 
   var login = document.getElementById("login").value;

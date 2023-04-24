@@ -4,7 +4,10 @@
   <!-- <link href="test.css"> -->
   <title>Suivi des frais de visite</title>
   <style type="text/css">
-    body {background-color: white; color:5599EE; } 
+    body {
+      background-color: white;
+      color:5599EE;
+    } 
     .titre {
       width: 180;
       clear: left;
@@ -21,7 +24,9 @@
 
 <body>
   <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
-    <div name="coin" style="height:10%;text-align:center;"><img src="images/logo.jpg" width="100" height="60" /></div>
+    <div name="coin" style="height:10%;text-align:center;">
+      <a href="../index.html"><img src="../images/gsb.png" width="100" height="60" /></a>
+    </div>
     <div name="menu">
       <h2>Outils</h2>
       <ul>
