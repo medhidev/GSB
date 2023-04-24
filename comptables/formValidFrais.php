@@ -24,7 +24,7 @@
 <body>
 <div name="gauche" style="clear:left:;float:left;width:18%; background-color:white; height:100%;">
 	<div name="coin" style="height:10%;text-align:center;">
-		<a href="../index.html">
+		<a href="../index.php">
 			<img src="../images/gsb.png" width="100" height="60"/>
 		</a>
 	</div>
@@ -33,7 +33,7 @@
 		<ul>
 			<li>Frais</li>
 			<ul>
-				<li><a href="formValidFrais.htm" >Enregistrer operation</a></li>
+				<li><a href="formValidFrais.php" >Enregistrer operation</a></li>
 			</ul>
 		</ul>
 	</div>

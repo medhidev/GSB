@@ -1,4 +1,7 @@
 <html>
+<?php
+session_start();
+?>
 
 <head>
   <link href="styles/formsaisieFrais.css" >
@@ -40,6 +43,7 @@
       mont.setAttribute("type", "text");
       var bouton = document.createElement("input");
       laDiv.appendChild(bouton);
+      
       //ajoute une gestion evenementielle en faisant evoluer le numero de la ligne
       bouton.setAttribute("onClick", "ajoutLigne(" + pNumero + ");");
       bouton.setAttribute("type", "button");
@@ -48,6 +52,11 @@
       bouton.setAttribute("id", "but" + pNumero);
     }
   </script>
+  <style>
+    body{
+      font-family: Arial;
+    }
+  </style>
 </head>
 <header>
   <h1>Gestion des Frais</h1>
@@ -57,15 +66,15 @@
 <body>
   <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
     <div name="coin" style="height:10%;margin-top: 50px;">
-      <a href="index.html"><img src="images/logo.jpg" width="100" height="60"></a>
+      <a href="../index.php"><img src="../images/gsb.png" width="100" height="60"></a>
     </div>
     <div name="menu">
       <h2>Outils</h2>
       <ul>
         <li>Frais</li>
         <ul>
-          <li><a href="formSaisieFrais.htmL">Nouveau</a></li>
-          <li><a href="formConsultFrais.htmL">Consulter</a></li>
+          <li><a href="formSaisieFrais.php">Nouveau</a></li>
+          <li><a href="formConsultFrais.php">Consulter</a></li>
         </ul>
       </ul>
     </div>
@@ -75,40 +84,91 @@
 
       <form name="formSaisieFrais" method="post" action="enregSaisieFrais.php" style="margin-top: 50px;">
         <h1> Saisie </h1>
-        <label class="titre">
-          PERIODE D'ENGAGEMENT
-        </label>
-        <label style="float:left;">
-          Mois (2 chiffres) :
-        </label>
-        <input type="text" size="4" name="FRA_MOIS" class="zone" />
-        <label style="float:left;">
-          &nbsp;Annee (4 chiffres) :
-        </label>
-        <input type="text" size="4" name="FRA_AN" class="zone" />
+        <table>
+          <tr>
+            <td>
+              <label class="titre">
+                Periode d'Engagement
+              </label>
+            </td>
+            <td>
+              <input type="text" size="4" name="FRA_PER" class="zone" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label style="float:left;">
+                Mois (2 chiffres) :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="4" name="FRA_MOIS" class="zone" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label style="float:left;">
+                Annee (4 chiffres) :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="4" name="FRA_AN" class="zone" />
+            </td>
+          </tr>
+        </table>
+
         <p class="titre">
         <div style="clear:left;">
           <h2>Frais au forfait</h2>
         </div>
-        <label class="titre">
-          Repas midi :
-        </label>
-        <input type="text" size="2" name="FRA_REPAS" class="zone" values/>
-        <label class="titre">
-          Nuitees :
-        </label>
-        <input type="text" size="2" name="FRA_NUIT" class="zone" />
-        <label class="titre">
-          Etape :
-        </label><input type="text" size="5" name="FRA_ETAP" class="zone" />
-        <label class="titre">
-          Km :
-        </label>
-        <input type="text" size="5" name="FRA_KM" class="zone" />
+        <table>
+          <tr>
+            <td>
+              <label class="titre">
+                Repas midi :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="2" name="FRA_REPAS" class="zone" values/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="titre">
+                Nuitees :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="2" name="FRA_NUIT" class="zone" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="titre">
+                Etape :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="5" name="FRA_ETAP" class="zone" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="titre">
+                Km :
+              </label>
+            </td>
+            <td>
+              <input type="text" size="5" name="FRA_KM" class="zone" />
+            </td>
+          </tr>
+        </table>
+
         <p class="titre">
         <div style="clear:left;">
           <h2>Hors Forfait</h2>
         </div>
+
         <div style="clear:left;">
           <div style="margin-left:180;float:left;width:90;text-align:center;">
             Date
@@ -127,8 +187,11 @@
           <input class="zone" size="3" name="FRA_AUT_MONT1" type="text" />
           <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />
         </div>
-        <p class="titre"><label class="titre">&nbsp;</label><input class="zone" type="reset" /><input class="zone"
-          type="submit" />
+        <br>
+        <p class="titre">
+          <!-- <label class="titre">&nbsp;</label> -->
+          <input class="zone" type="reset" />&nbsp;
+          <input class="zone" type="submit" />
       </form>
     </div>
   </div>

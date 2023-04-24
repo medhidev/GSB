@@ -1,5 +1,16 @@
 <!DOCTYPE html>
-<html> 
+<html>
+
+<?php
+  session_start();
+  //Donner un une session à l'utilisateur
+  $_SESSION["connect"] = "session1";
+
+  //test
+  echo $_SERVER["REMOTE_ADDR"]."<br>"; //IP utilisateur
+  echo date("Y-m-d H:i:s"); //Format SQL
+
+?>
 
 <!-- Librairies & Metadata -->
 <head>
@@ -37,13 +48,21 @@
     <br>
 
     <!-- Création d'un compte -->
-    <a href="creationCompte.html" style="text-decoration: none; font-size: 12px;">creer un compte</a>
+    <!-- <a href="creationCompte.html" style="text-decoration: none; font-size: 12px;">creer un compte</a> -->
 
     <div class="boutons">
       <input type="submit" name="send">
       <input type="reset" name="clear">
     </div>
   </form>
-
 </body>
+
+<footer>
+  <div style="position: absolute; bottom: 0; left: 0; right: 1; padding: 10px">
+    Site GSB - BTS SIO 1 &copy; 2022 / 2023
+  </div>
+  <div>
+    <!-- Mettre les informations de respect des normes XML ... -->
+  </div>
+</footer>
 </html>
