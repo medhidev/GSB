@@ -1,16 +1,14 @@
-/* Styles pour la page de saisie des frais */
-body {
+/* Refaire en fonction de formSaisieFrais.php (css dedans aussi)*/
+
+/* body {
   font-family: Arial, sans-serif;
   font-size: 14px;
   margin: 0;
   padding: 0;
-}
+} */
 
-h1, h2 {
-  text-align: center;
-}
 
-label.titre {
+/* label.titre {
   float: left;
   width: 250px;
   font-weight: bold;
@@ -76,4 +74,4 @@ ul li a {
 ul li a:hover {
   background-color: white;
   color: #77AADD;
-}
+} */

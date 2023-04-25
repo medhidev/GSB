@@ -4,7 +4,8 @@ session_start();
 ?>
 
 <head>
-  <link href="styles/formsaisieFrais.css" >
+  <!-- <link rel="stylesheet" href="../styles/formsaisieFrais.css"> -->
+  <link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
   <title>Gestion des frais de visite</title>
   <script language="javascript">
     function ajoutLigne(pNumero) {
@@ -16,7 +17,7 @@ session_start();
       var titre = document.createElement("label");	//cree un label
       laDiv.appendChild(titre);						//l'ajoute a la DIV
       titre.setAttribute("class", "titre");			//definit les proprietes
-      titre.innerHTML = "   " + pNumero + " : ";
+      titre.innerHTML = "<br>" + pNumero + " : ";
 
       //zone our la date du frais
       var ladate = document.createElement("input");
@@ -25,6 +26,9 @@ session_start();
       ladate.setAttribute("size", "12");
       ladate.setAttribute("class", "zone");
       ladate.setAttribute("type", "text");
+      ladate.setAttribute("placeholder", "Date");
+      ladate.setAttribute("disabled", "disabled");
+      ladate.setAttribute("value", "<?php echo (string)date('d.m.Y');?>");
 
       //zone de saisie pour un nouveau libelle			
       var libelle = document.createElement("input");
@@ -33,6 +37,7 @@ session_start();
       libelle.setAttribute("size", "30");
       libelle.setAttribute("class", "zone");
       libelle.setAttribute("type", "text");
+      libelle.setAttribute("placeholder", "Libelle");
 
       //zone de saisie pour un nouveau montant		
       var mont = document.createElement("input");
@@ -41,6 +46,8 @@ session_start();
       mont.setAttribute("size", "3");
       mont.setAttribute("class", "zone");
       mont.setAttribute("type", "text");
+      mont.setAttribute("placeholder", "Montant");
+      mont.setAttribute("disabled", "disabled");
       var bouton = document.createElement("input");
       laDiv.appendChild(bouton);
       
@@ -52,18 +59,10 @@ session_start();
       bouton.setAttribute("id", "but" + pNumero);
     }
   </script>
-  <style>
-    body{
-      font-family: Arial;
-    }
-  </style>
 </head>
-<header>
-  <h1>Gestion des Frais</h1>
-  <link href="styles/formsaisieFrais.css" rel="stylesheet" type="text/css" />
-</header>
 
-<body>
+<body style="font-family: Arial;">
+  <!-- GAUCHE-->
   <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
     <div name="coin" style="height:10%;margin-top: 50px;">
       <a href="../index.php"><img src="../images/gsb.png" width="100" height="60"></a>
@@ -79,22 +78,15 @@ session_start();
       </ul>
     </div>
   </div>
+
+  <!-- DROITE -->
   <div name="droite" style="float:left;width:80%;">
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
 
       <form name="formSaisieFrais" method="post" action="enregSaisieFrais.php" style="margin-top: 50px;">
-        <h1> Saisie </h1>
+        <h1>Saisie | Gestion des Frais</h1><br>
+        <h2>Periode Engagement</h2>
         <table>
-          <tr>
-            <td>
-              <label class="titre">
-                Periode d'Engagement
-              </label>
-            </td>
-            <td>
-              <input type="text" size="4" name="FRA_PER" class="zone" />
-            </td>
-          </tr>
           <tr>
             <td>
               <label style="float:left;">
@@ -102,7 +94,7 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="4" name="FRA_MOIS" class="zone" />
+              <input type="text" size="4" name="FRA_MOIS" class="zone" disabled="disabled" value="<?php echo (string)date('m');?>"/>
             </td>
           </tr>
           <tr>
@@ -112,7 +104,7 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="4" name="FRA_AN" class="zone" />
+              <input type="text" size="4" name="FRA_AN" class="zone" disabled="disabled" value="<?php echo (string)date('Y');?>"/>
             </td>
           </tr>
         </table>
@@ -167,24 +159,11 @@ session_start();
         <p class="titre">
         <div style="clear:left;">
           <h2>Hors Forfait</h2>
-        </div>
-
-        <div style="clear:left;">
-          <div style="margin-left:180;float:left;width:90;text-align:center;">
-            Date
-          </div>
-          <div style="float:left;width:220;text-align:center;">
-            Libelle
-          </div>
-          <div style="float:left;width:30;text-align:center;">
-            Montant
-          </div>
-        </div>
         <div style="clear:left;" id="lignes">
           <label class="titre"> 1 : </label>
-          <input type="text" size="12" name="FRA_AUT_DAT1" class="zone" />
-          <input type="text" size="30" name="FRA_AUT_LIB1" class="zone" />
-          <input class="zone" size="3" name="FRA_AUT_MONT1" type="text" />
+          <input type="text" size="12" name="FRA_AUT_DAT1" class="zone" placeholder="Date" disabled="disabled" value="<?php echo (string)date('d.m.Y');?>"/>
+          <input type="text" size="30" name="FRA_AUT_LIB1" class="zone" placeholder="Libelle"/>
+          <input class="zone" size="3" name="FRA_AUT_MONT1" type="text" placeholder="Montant" disabled="disabled"/>
           <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />
         </div>
         <br>

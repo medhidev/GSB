@@ -42,7 +42,4 @@ function emptyField(event){
     alert("L'un des champs du formulaire");
     console.error('Formulaire vide');
   }
-  else{
-    console.log('connection au script');
-  }
 }

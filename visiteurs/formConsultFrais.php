@@ -32,8 +32,12 @@
       <ul>
         <li>Frais</li>
         <ul>
-          <li><a href="formSaisieFrais.htm">Nouveau</a></li>
-          <li><a href="formConsultFrais.htm">Consulter</a></li>
+          <li>
+            <a href="formSaisieFrais.php">Nouveau</a>
+          </li>
+          <li>
+            <a href="formConsultFrais.php">Consulter</a>
+          </li>
         </ul>
       </ul>
     </div>

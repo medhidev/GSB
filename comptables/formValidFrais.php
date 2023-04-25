@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <html>
 <head>
 	<link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
@@ -33,7 +36,7 @@
 		<ul>
 			<li>Frais</li>
 			<ul>
-				<li><a href="formValidFrais.php" >Enregistrer operation</a></li>
+				<li><a href="../download/frais.txt" download="frais_visiteur.txt" >Enregistrer operation</a></li>
 			</ul>
 		</ul>
 	</div>

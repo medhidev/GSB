@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html>
-
 <?php
-  session_start();
-  //Donner un une session à l'utilisateur
-  $_SESSION["connect"] = "session1";
-
-  //test
-  echo $_SERVER["REMOTE_ADDR"]."<br>"; //IP utilisateur
-  echo date("Y-m-d H:i:s"); //Format SQL
+    session_start();
+    //Donner un une session à l'utilisateur
+    $_SESSION["connect"] = "session1";
 
 ?>
 
+<html>
 <!-- Librairies & Metadata -->
 <head>
   <meta charset="utf-8">
@@ -23,9 +18,16 @@
   <script src="Js/main.js"></script>
 </head>
 
+<!-- Test -->
+<strong>
+  <?php
+    echo "IP: ".$_SERVER["REMOTE_ADDR"]."<br>"; //IP utilisateur (repère)
+  ?>
+</strong><br>
+
 <body>
   <!-- Création d'une balise "form" -->
-  <form action="PHP/verifConnect.php" method="post" onsubmit="emptyField()">
+  <form action="PHP/traitement/verifConnect.php" method="post" onsubmit="emptyField()">
     <h2>Connexion à votre compte</h2>
     <p>Login</p>
     <input type="text" name="identifiant" id="login">
@@ -61,7 +63,7 @@
   <div style="position: absolute; bottom: 0; left: 0; right: 1; padding: 10px">
     Site GSB - BTS SIO 1 &copy; 2022 / 2023
   </div>
-  <div>
+  <div style="position: absolute; bottom: 0; left: 1; right: 0; padding: 10px">
     <!-- Mettre les informations de respect des normes XML ... -->
   </div>
 </footer>
