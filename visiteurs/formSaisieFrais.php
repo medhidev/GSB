@@ -1,64 +1,19 @@
 <html>
 <?php
 session_start();
+
+require_once("../PHP/include/connection.inc.php");
+$reqRepas = "SELECT montant FROM fraisforfait WHERE id='REP'";
+$reqNuit = "SELECT montant FROM fraisforfait WHERE id='NUI'";
+$reqEtape = "SELECT montant FROM fraisforfait WHERE id='ETP'";
+$reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
 ?>
 
 <head>
   <!-- <link rel="stylesheet" href="../styles/formsaisieFrais.css"> -->
   <link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
+  <script src="../Js/emptyfield.js"></script>
   <title>Gestion des frais de visite</title>
-  <script language="javascript">
-    function ajoutLigne(pNumero) {
-      //ajoute une ligne de produits/qte a la div "lignes"     
-      //masque le bouton en cours
-      document.getElementById("but" + pNumero).setAttribute("hidden", "true");
-      pNumero++;										//incremente le numero de ligne
-      var laDiv = document.getElementById("lignes");	//recupere l'objet DOM qui contient les donnees
-      var titre = document.createElement("label");	//cree un label
-      laDiv.appendChild(titre);						//l'ajoute a la DIV
-      titre.setAttribute("class", "titre");			//definit les proprietes
-      titre.innerHTML = "<br>" + pNumero + " : ";
-
-      //zone our la date du frais
-      var ladate = document.createElement("input");
-      laDiv.appendChild(ladate);
-      ladate.setAttribute("name", "FRA_AUT_DAT" + pNumero);
-      ladate.setAttribute("size", "12");
-      ladate.setAttribute("class", "zone");
-      ladate.setAttribute("type", "text");
-      ladate.setAttribute("placeholder", "Date");
-      ladate.setAttribute("disabled", "disabled");
-      ladate.setAttribute("value", "<?php echo (string)date('d.m.Y');?>");
-
-      //zone de saisie pour un nouveau libelle			
-      var libelle = document.createElement("input");
-      laDiv.appendChild(libelle);
-      libelle.setAttribute("name", "FRA_AUT_LIB" + pNumero);
-      libelle.setAttribute("size", "30");
-      libelle.setAttribute("class", "zone");
-      libelle.setAttribute("type", "text");
-      libelle.setAttribute("placeholder", "Libelle");
-
-      //zone de saisie pour un nouveau montant		
-      var mont = document.createElement("input");
-      laDiv.appendChild(mont);
-      mont.setAttribute("name", "FRA_AUT_MONT" + pNumero);
-      mont.setAttribute("size", "3");
-      mont.setAttribute("class", "zone");
-      mont.setAttribute("type", "text");
-      mont.setAttribute("placeholder", "Montant");
-      mont.setAttribute("disabled", "disabled");
-      var bouton = document.createElement("input");
-      laDiv.appendChild(bouton);
-      
-      //ajoute une gestion evenementielle en faisant evoluer le numero de la ligne
-      bouton.setAttribute("onClick", "ajoutLigne(" + pNumero + ");");
-      bouton.setAttribute("type", "button");
-      bouton.setAttribute("value", "+");
-      bouton.setAttribute("class", "zone");
-      bouton.setAttribute("id", "but" + pNumero);
-    }
-  </script>
 </head>
 
 <body style="font-family: Arial;">
@@ -83,7 +38,7 @@ session_start();
   <div name="droite" style="float:left;width:80%;">
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
 
-      <form name="formSaisieFrais" method="post" action="enregSaisieFrais.php" style="margin-top: 50px;">
+      <form name="formSaisieFrais" method="post" action="../PHP/enregSaisieFrais.php" style="margin-top: 50px;" onsubmit="emptyField()">
         <h1>Saisie | Gestion des Frais</h1><br>
         <h2>Periode Engagement</h2>
         <table>
@@ -121,7 +76,12 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="2" name="FRA_REPAS" class="zone" values/>
+              <input type="number" name="FRA_REPAS" class="zone" id="FRA_REPAS" style="width: 30%;"/>
+              <?php
+              $priceRepas = $connect->query($reqRepas);
+              $ligne = $priceRepas->fetch();
+              echo "(".$ligne["montant"].") unit";
+              ?>
             </td>
           </tr>
           <tr>
@@ -131,7 +91,12 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="2" name="FRA_NUIT" class="zone" />
+              <input type="number" name="FRA_NUIT" class="zone" id="FRA_NUIT" style="width: 30%;"/>
+              <?php
+              $priceNuit = $connect->query($reqNuit);
+              $ligne = $priceNuit->fetch();
+              echo "(".$ligne["montant"].") unit";
+              ?>
             </td>
           </tr>
           <tr>
@@ -141,7 +106,12 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="5" name="FRA_ETAP" class="zone" />
+              <input type="number" name="FRA_ETAP" class="zone" id="FRA_ETAP" style="width: 30%;"/>
+              <?php
+              $priceEtape = $connect->query($reqEtape);
+              $ligne = $priceEtape->fetch();
+              echo "(".$ligne["montant"].") unit";
+              ?>
             </td>
           </tr>
           <tr>
@@ -151,7 +121,12 @@ session_start();
               </label>
             </td>
             <td>
-              <input type="text" size="5" name="FRA_KM" class="zone" />
+              <input type="number" name="FRA_KM" class="zone" id="FRA_KM" style="width: 30%;" />
+              <?php
+              $priceKm = $connect->query($reqKm);
+              $ligne = $priceKm->fetch();
+              echo "(".$ligne["montant"].") unit";
+              ?>
             </td>
           </tr>
         </table>
@@ -162,8 +137,10 @@ session_start();
         <div style="clear:left;" id="lignes">
           <label class="titre"> 1 : </label>
           <input type="text" size="12" name="FRA_AUT_DAT1" class="zone" placeholder="Date" disabled="disabled" value="<?php echo (string)date('d.m.Y');?>"/>
+
           <input type="text" size="30" name="FRA_AUT_LIB1" class="zone" placeholder="Libelle"/>
-          <input class="zone" size="3" name="FRA_AUT_MONT1" type="text" placeholder="Montant" disabled="disabled"/>
+
+          <input class="zone" size="5" name="FRA_AUT_MONT1" type="text" id="montant" disabled="disbaled" placeholder="Montant"/>
           <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />
         </div>
         <br>
@@ -175,5 +152,82 @@ session_start();
     </div>
   </div>
 </body>
+<script language="javascript">
+  function ajoutLigne(pNumero) {
+    //ajoute une ligne de produits/qte a la div "lignes"     
+    //masque le bouton en cours
+    document.getElementById("but" + pNumero).setAttribute("hidden", "true");
+    pNumero++;										//incremente le numero de ligne
+    var laDiv = document.getElementById("lignes");	//recupere l'objet DOM qui contient les donnees
+    var titre = document.createElement("label");	//cree un label
+    laDiv.appendChild(titre);						//l'ajoute a la DIV
+    titre.setAttribute("class", "titre");			//definit les proprietes
+    titre.innerHTML = "<br>" + pNumero + " : ";
+
+    //zone our la date du frais
+    var ladate = document.createElement("input");
+    laDiv.appendChild(ladate);
+    ladate.setAttribute("name", "FRA_AUT_DAT" + pNumero);
+    ladate.setAttribute("size", "12");
+    ladate.setAttribute("class", "zone");
+    ladate.setAttribute("type", "text");
+    ladate.setAttribute("placeholder", "Date");
+    ladate.setAttribute("disabled", "disabled");
+    ladate.setAttribute("value", "<?php echo (string)date('d.m.Y');?>");
+
+    //zone de saisie pour un nouveau libelle			
+    var libelle = document.createElement("input");
+    laDiv.appendChild(libelle);
+    libelle.setAttribute("name", "FRA_AUT_LIB" + pNumero);
+    libelle.setAttribute("size", "30");
+    libelle.setAttribute("class", "zone");
+    libelle.setAttribute("type", "text");
+    libelle.setAttribute("placeholder", "Libelle");
+
+    //zone de saisie pour un nouveau montant		
+    var mont = document.createElement("input");
+    laDiv.appendChild(mont);
+    mont.setAttribute("name", "FRA_AUT_MONT" + pNumero);
+    mont.setAttribute("size", "3");
+    mont.setAttribute("class", "zone");
+    mont.setAttribute("type", "text");
+    mont.setAttribute("placeholder", "Montant");
+    mont.setAttribute("disabled", "disabled");
+    mont.setAttribute("id", "montant");
+    var bouton = document.createElement("input");
+    laDiv.appendChild(bouton);
+      
+    //ajoute une gestion evenementielle en faisant evoluer le numero de la ligne
+    bouton.setAttribute("onClick", "ajoutLigne(" + pNumero + ");");
+    bouton.setAttribute("type", "button");
+    bouton.setAttribute("value", "+");
+    bouton.setAttribute("class", "zone");
+    bouton.setAttribute("id", "but" + pNumero);
+  }
+
+  // Récupération des éléments du formulaire
+  var repas = document.querySelector("#FRA_REPAS");
+    var nuit = document.querySelector("#FRA_NUIT");
+    var etape = document.querySelector("#FRA_ETAP");
+    var km = document.querySelector("#FRA_KM");
+    var montant = document.querySelector("#montant");
+
+    // Ajout des écouteurs d'événements pour chaque champ d'entrée
+    repas.addEventListener("input", calculFrais);
+    nuit.addEventListener("input", calculFrais);
+    etape.addEventListener("input", calculFrais);
+    km.addEventListener("input", calculFrais);
+
+    // Fonction de calcul des frais
+    function calculFrais() {
+        // Vérification si tous les champs sont remplis
+        if (Boolean(repas.value) && Boolean(nuit.value) && Boolean(etape.value) && Boolean(km.value)) {
+            var result = parseInt(repas.value) + parseInt(nuit.value) + parseInt(etape.value) + parseInt(km.value);
+            montant.value = result;
+        } else {
+            montant.value = "";
+        }
+    }
+</script>
 
 </html>

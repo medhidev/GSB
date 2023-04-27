@@ -1,7 +1,7 @@
 <?php
   session_start();
   // Import du script de connection BDD
-  require("..\includes\connection.php");
+  require_once("/include/login.inc.php");
 
   // Variables des champs de saisies
   $login = $_POST["identifiant"];
@@ -18,18 +18,18 @@
 
       // Si l'utilsateur est un comptable
       if($ligne['compta'] == 'OUI'){
-        header('Location: ../../comptables/formValidFrais.php');
+        header('Location: ../comptables/formValidFrais.php');
       }
       else{
-        header('Location: ../../visiteurs/formSaisieFrais.php');
+        header('Location: ../visiteurs/formSaisieFrais.php');
       }
     }
     else{
-      // Retourner vers la page de départ
-      header('Location: ../../index.php');
+      // Retourner vers la page de login
+      header('Location: ../index.php');
     }
   }
   else{
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
   }
 ?>

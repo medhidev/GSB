@@ -47,7 +47,7 @@
       <h1>Suivi de remboursement des Frais</h1>
     </div>
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
-      <form name="formConsultFrais" method="post" action="chercheFrais.php">
+      <form name="formConsultFrais" method="post" action="../PHP/enregSaisieFrais.php">
         <h1> Periode </h1>
         <label class="titre">Mois/Annee :</label> <input class="zone" type="text" name="dateConsult" size="12" />
         <p class="titre">

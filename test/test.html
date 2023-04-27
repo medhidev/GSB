@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div>
+          <label for="FRA_REPAS">Repas :</label>
+          <input type="number" id="FRA_REPAS" name="FRA_REPAS">
+        </div>
+        <div>
+          <label for="FRA_NUIT">Nuitées :</label>
+          <input type="number" id="FRA_NUIT" name="FRA_NUIT">
+        </div>
+        <div>
+          <label for="FRA_ETAP">Étapes :</label>
+          <input type="number" id="FRA_ETAP" name="FRA_ETAP">
+        </div>
+        <div>
+          <label for="FRA_KM">Kilomètres :</label>
+          <input type="number" id="FRA_KM" name="FRA_KM">
+        </div>
+        <div>
+          <label for="montant">Montant :</label>
+          <output id="montant" name="montant"></output>
+        </div>
+    </form>
+</body>
+<script>
+    // Récupération des éléments du formulaire
+    var repas = document.querySelector("#FRA_REPAS");
+    var nuit = document.querySelector("#FRA_NUIT");
+    var etape = document.querySelector("#FRA_ETAP");
+    var km = document.querySelector("#FRA_KM");
+    var montant = document.querySelector("#montant");
+
+    // Ajout des écouteurs d'événements pour chaque champ d'entrée
+    repas.addEventListener("input", calculFrais);
+    nuit.addEventListener("input", calculFrais);
+    etape.addEventListener("input", calculFrais);
+    km.addEventListener("input", calculFrais);
+
+    // Fonction de calcul des frais
+    function calculFrais() {
+        // Vérification si tous les champs sont remplis
+        if (Boolean(repas.value) && Boolean(nuit.value) && Boolean(etape.value) && Boolean(km.value)) {
+            var result = parseInt(repas.value) + parseInt(nuit.value) + parseInt(etape.value) + parseInt(km.value);
+            montant.value = result;
+        } else {
+            montant.value = "";
+        }
+    }
+</script>
+</html>

@@ -51,7 +51,7 @@
 		<label class="titre">Choisir le visiteur :</label>
 		<select name="lstVisiteur" class="zone">
 			<?php
-				require("..\PHP\includes\connection.php");
+				require("../PHP/include/connection.inc.php");
 
 				//requetes des nom des visiteurs
 				$reqSQL = "SELECT nom, id, compta FROM visiteur";
