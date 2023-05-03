@@ -5,7 +5,7 @@
 <?php
     session_start();
     //Donner un une session à l'utilisateur
-    $_SESSION["connect"] = "session1";
+    $_SESSION["connect"] = "sessionLogin";
 ?>
 
 <html>

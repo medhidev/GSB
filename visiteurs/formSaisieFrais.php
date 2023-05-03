@@ -1,12 +1,34 @@
 <html>
 <?php
-session_start();
+  session_start();
+  $_SESSION["connect"] = "sessionVisiteurSaisie";
 
-require_once("../PHP/include/connection.inc.php");
-$reqRepas = "SELECT montant FROM fraisforfait WHERE id='REP'";
-$reqNuit = "SELECT montant FROM fraisforfait WHERE id='NUI'";
-$reqEtape = "SELECT montant FROM fraisforfait WHERE id='ETP'";
-$reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
+  // Requêtes SQL
+  require_once("../PHP/include/connection.inc.php");
+  $reqRepas = "SELECT montant FROM fraisforfait WHERE id='REP'";
+  $reqNuit = "SELECT montant FROM fraisforfait WHERE id='NUI'";
+  $reqEtape = "SELECT montant FROM fraisforfait WHERE id='ETP'";
+  $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
+
+  // Données Repas
+  $verifRepas = $connect->query($reqRepas);
+  $ligneRepas = $verifRepas->fetch();
+  $prixRepas = $ligneRepas["montant"];
+
+  // Données Nuit
+  $verifNuit = $connect->query($reqNuit);
+  $ligneNuit = $verifNuit->fetch();
+  $prixNuit = $ligneNuit["montant"];
+
+  // Données Etape
+  $verifEtape= $connect->query($reqEtape);
+  $ligneEtape = $verifEtape->fetch();
+  $prixEtape = $ligneEtape["montant"];
+
+  // Données Km
+  $verifKm = $connect->query($reqKm);
+  $ligneKm = $verifKm->fetch();
+  $prixKm = $ligneKm["montant"];
 ?>
 
 <head>
@@ -77,11 +99,7 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
             </td>
             <td>
               <input type="number" name="FRA_REPAS" class="zone" id="FRA_REPAS" style="width: 30%;"/>
-              <?php
-              $priceRepas = $connect->query($reqRepas);
-              $ligne = $priceRepas->fetch();
-              echo "(".$ligne["montant"].") unit";
-              ?>
+              <?php echo "(".$prixRepas.") unit";?>
             </td>
           </tr>
           <tr>
@@ -92,11 +110,7 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
             </td>
             <td>
               <input type="number" name="FRA_NUIT" class="zone" id="FRA_NUIT" style="width: 30%;"/>
-              <?php
-              $priceNuit = $connect->query($reqNuit);
-              $ligne = $priceNuit->fetch();
-              echo "(".$ligne["montant"].") unit";
-              ?>
+              <?php echo "(".$prixNuit.") unit";?>
             </td>
           </tr>
           <tr>
@@ -107,11 +121,7 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
             </td>
             <td>
               <input type="number" name="FRA_ETAP" class="zone" id="FRA_ETAP" style="width: 30%;"/>
-              <?php
-              $priceEtape = $connect->query($reqEtape);
-              $ligne = $priceEtape->fetch();
-              echo "(".$ligne["montant"].") unit";
-              ?>
+              <?php echo "(".$prixEtape.") unit";?>
             </td>
           </tr>
           <tr>
@@ -122,11 +132,7 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
             </td>
             <td>
               <input type="number" name="FRA_KM" class="zone" id="FRA_KM" style="width: 30%;" />
-              <?php
-              $priceKm = $connect->query($reqKm);
-              $ligne = $priceKm->fetch();
-              echo "(".$ligne["montant"].") unit";
-              ?>
+              <?php echo "(".$prixKm.") unit";?>
             </td>
           </tr>
         </table>
@@ -153,7 +159,8 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
   </div>
 </body>
 <script language="javascript">
-  function ajoutLigne(pNumero) {
+  function ajoutLigne(pNumero)
+  {
     //ajoute une ligne de produits/qte a la div "lignes"     
     //masque le bouton en cours
     document.getElementById("but" + pNumero).setAttribute("hidden", "true");
@@ -207,27 +214,32 @@ $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
 
   // Récupération des éléments du formulaire
   var repas = document.querySelector("#FRA_REPAS");
-    var nuit = document.querySelector("#FRA_NUIT");
-    var etape = document.querySelector("#FRA_ETAP");
-    var km = document.querySelector("#FRA_KM");
-    var montant = document.querySelector("#montant");
+  var nuit = document.querySelector("#FRA_NUIT");
+  var etape = document.querySelector("#FRA_ETAP");
+  var km = document.querySelector("#FRA_KM");
+  var montant = document.querySelector("#montant");
 
-    // Ajout des écouteurs d'événements pour chaque champ d'entrée
-    repas.addEventListener("input", calculFrais);
-    nuit.addEventListener("input", calculFrais);
-    etape.addEventListener("input", calculFrais);
-    km.addEventListener("input", calculFrais);
+  // Ajout des écouteurs d'événements pour chaque champ d'entrée
+  repas.addEventListener("input", calculFrais);
+  nuit.addEventListener("input", calculFrais);
+  etape.addEventListener("input", calculFrais);
+  km.addEventListener("input", calculFrais);
 
-    // Fonction de calcul des frais
-    function calculFrais() {
-        // Vérification si tous les champs sont remplis
-        if (Boolean(repas.value) && Boolean(nuit.value) && Boolean(etape.value) && Boolean(km.value)) {
-            var result = parseInt(repas.value) + parseInt(nuit.value) + parseInt(etape.value) + parseInt(km.value);
-            montant.value = result;
-        } else {
-            montant.value = "";
-        }
+  // Fonction de calcul des frais
+  function calculFrais()
+  {
+    // Vérification si tous les champs sont remplis
+    if (Boolean(repas.value) && Boolean(nuit.value) && Boolean(etape.value) && Boolean(km.value))
+    {
+      var result = parseInt(repas.value)* <?php echo $prixRepas;?> + parseInt(nuit.value)* <?php echo $prixNuit;?>
+      + parseInt(etape.value)* <?php echo $prixEtape;?> + parseInt(km.value)* <?php echo $prixKm;?>;
+      montant.value = result;
     }
+    else
+    {
+      montant.value = "";
+    }
+  }
 </script>
 
 </html>

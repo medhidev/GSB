@@ -2,34 +2,43 @@
   session_start();
   // Import du script de connection BDD
   require_once("/include/login.inc.php");
+  require_once("/include/dataUser.inc.php");
 
   // Variables des champs de saisies
   $login = $_POST["identifiant"];
   $password = $_POST["password"];
 
   // Requêtes SQL
-  $request = "SELECT compta FROM visiteur WHERE login ='$login' AND mdp = '$password'";
+  $request = "SELECT * FROM visiteur WHERE login ='$login' AND mdp = '$password'";
   $resultRequest = $connect->query($request);
-  $ligne = $resultRequest->fetch();
+  $ligneUser = $resultRequest->fetch();
 
-  if($_SESSION["connect"] == "session1"){
+  if($_SESSION["connect"] == "sessionLogin")
+  {
     // Si l'utilisateur se trouve bien dans la BDD
-    if($ligne != false){
-
+    if($ligneUser != false)
+    {
       // Si l'utilsateur est un comptable
-      if($ligne['compta'] == 'OUI'){
+      if($ligneUser['compta'] == 'OUI')
+      {
         header('Location: ../comptables/formValidFrais.php');
       }
-      else{
+
+      else
+      {
         header('Location: ../visiteurs/formSaisieFrais.php');
       }
     }
-    else{
+
+    else
+    {
       // Retourner vers la page de login
       header('Location: ../index.php');
     }
   }
-  else{
+
+  else
+  {
     header('Location: ../index.php');
   }
 ?>

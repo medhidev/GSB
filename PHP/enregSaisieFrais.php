@@ -1,17 +1,16 @@
 <?php
+    session_start();
     require_once("/include/connection.inc.php");
+    require_once("/include/dataUser.inc.php");
 
-    // Recuperation des données via d'autres tables
-    $request = "SELECT id FROM visiteur WHERE login ='$login' AND mdp = '$password'";
+    // Requête SQL
+    $request = "SELECT id FROM visiteur WHERE login ='$loginStocke' AND mdp = '$mdpStocke'";
     $resultRequest = $connect->query($request);
-    $ligne = $resultRequest->fetch();
+    $ligneUser = $resultRequest->fetch();
 
     //Récupérer l'enssemble des données -> lignefraisforfait
-    $idVisiteur = $ligne["id"];
-    $mois = $_POST["FRA_MOIS"];
-    $idFrais = $_POST[""];
-    $quantite = $_POST[""];
-
-    echo $idVisiteur;
-
+    $idVisiteur = $ligneUser["id"];
+    
+    // Insertion BDD
+   $reqInsert = "INSERT INTO lignefraisforfait (idVisiteur) VALUES ('$idVisiteur')";
 ?>
