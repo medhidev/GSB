@@ -41,6 +41,6 @@ __Utilisateur UserGSB - Accès table visiteur__
 
 ## Hebergement & Configuration (Michael (Judas))
 
-* Gestion du DNS du serveur
-* Hebergement et configuration sur un poste
-* Gestion des accès à distance
+* Hebergement et configuration sur un poste en local
+* Gestion des accès à distance via Filezilla
+* Installation des différents services (PHP/ftp/PHPMyAdmin)
