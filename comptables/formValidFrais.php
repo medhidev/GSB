@@ -27,7 +27,7 @@
 <body>
 <div name="gauche" style="clear:left:;float:left;width:18%; background-color:white; height:100%;">
 	<div name="coin" style="height:10%;text-align:center;">
-		<a href="../index.php">
+		<a href="../index.html">
 			<img src="../images/gsb.png" width="100" height="60"/>
 		</a>
 	</div>
@@ -80,7 +80,7 @@
 		</div>
 		<table style="color:white;">
 			<tr>
-				<th>Repas midi</th>
+				<td>Repas midi</td>
 				<th>Nuitee </th>
 				<th>Etape</th>
 				<th>Km </th>

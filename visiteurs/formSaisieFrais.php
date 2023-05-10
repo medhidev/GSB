@@ -1,7 +1,6 @@
 <html>
 <?php
   session_start();
-  $_SESSION["connect"] = "sessionVisiteurSaisie";
 
   // Requêtes SQL
   require_once("../PHP/include/connection.inc.php");
@@ -34,6 +33,7 @@
 <head>
   <!-- <link rel="stylesheet" href="../styles/formsaisieFrais.css"> -->
   <link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/formsaisieFrais.css">
   <script src="../Js/emptyfield.js"></script>
   <title>Gestion des frais de visite</title>
 </head>
@@ -42,7 +42,7 @@
   <!-- GAUCHE-->
   <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
     <div name="coin" style="height:10%;margin-top: 50px;">
-      <a href="../index.php"><img src="../images/gsb.png" width="100" height="60"></a>
+      <a href="../index.html"><img src="../images/gsb.png" width="100" height="60"></a>
     </div>
     <div name="menu">
       <h2>Outils</h2>
@@ -52,6 +52,7 @@
           <li><a href="formSaisieFrais.php">Nouveau</a></li>
           <li><a href="formConsultFrais.php">Consulter</a></li>
         </ul>
+        <li id="bottom">Connecté en tant que: <br><?php echo $_SESSION["connectLogin"] ?></li>
       </ul>
     </div>
   </div>
@@ -135,6 +136,16 @@
               <?php echo "(".$prixKm.") unit";?>
             </td>
           </tr>
+          <tr>
+            <td>
+            <br><br>
+              Montant:
+            </td>
+            <td>
+              <br><br>
+              <input class="zone" style="width: 30%;" name="FRA_AUT_MONT" type="text" id="montant" disabled="disabled"/>
+            </td>
+          </tr>
         </table>
 
         <p class="titre">
@@ -144,16 +155,16 @@
           <label class="titre"> 1 : </label>
           <input type="text" size="12" name="FRA_AUT_DAT1" class="zone" placeholder="Date" disabled="disabled" value="<?php echo (string)date('d.m.Y');?>"/>
 
-          <input type="text" size="30" name="FRA_AUT_LIB1" class="zone" placeholder="Libelle"/>
+          <input type="text" size="30" name="FRA_AUT_LIB1" id="FRA_AUT_LIB1" class="zone" placeholder="Libelle"/>
+          <input type="text" size="5" name="prix" id="prix" class="zone" placeholder="Prix" style="text-align: center;"/>
 
-          <input class="zone" size="5" name="FRA_AUT_MONT1" type="text" id="montant" disabled="disbaled" placeholder="Montant"/>
+          <input class="zone" size="10" name="FRA_AUT_MONT1" id="FRA_AUT_MONT1" type="text" id="montant" disabled="disbaled" placeholder="Ajout"/>
           <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />
         </div>
         <br>
         <p class="titre">
-          <!-- <label class="titre">&nbsp;</label> -->
-          <input class="zone" type="reset" />&nbsp;
-          <input class="zone" type="submit" />
+          <input class="zone" type="submit" />&nbsp;
+          <input class="zone" type="reset" />
       </form>
     </div>
   </div>
@@ -191,14 +202,24 @@
     libelle.setAttribute("type", "text");
     libelle.setAttribute("placeholder", "Libelle");
 
-    //zone de saisie pour un nouveau montant		
+    //zone de saisie pour le prix	
+    var prix = document.createElement("input");
+    laDiv.appendChild(prix);
+    prix.setAttribute("name", "prix" + pNumero);
+    prix.setAttribute("size", "5");
+    prix.setAttribute("class", "zone");
+    prix.setAttribute("type", "text");
+    prix.setAttribute("placeholder", "Prix");
+    prix.setAttribute("style", "text-align: center");
+
+    //Affichage montant		
     var mont = document.createElement("input");
     laDiv.appendChild(mont);
     mont.setAttribute("name", "FRA_AUT_MONT" + pNumero);
-    mont.setAttribute("size", "3");
+    mont.setAttribute("size", "10");
     mont.setAttribute("class", "zone");
     mont.setAttribute("type", "text");
-    mont.setAttribute("placeholder", "Montant");
+    mont.setAttribute("placeholder", "Ajout");
     mont.setAttribute("disabled", "disabled");
     mont.setAttribute("id", "montant");
     var bouton = document.createElement("input");
@@ -212,18 +233,27 @@
     bouton.setAttribute("id", "but" + pNumero);
   }
 
-  // Récupération des éléments du formulaire
+  // Frais forfait
   var repas = document.querySelector("#FRA_REPAS");
   var nuit = document.querySelector("#FRA_NUIT");
   var etape = document.querySelector("#FRA_ETAP");
   var km = document.querySelector("#FRA_KM");
   var montant = document.querySelector("#montant");
 
+  // Frais hors-forfait
+  var libelle = document.querySelector("#FRA_AUT_LIB1");
+  var prix = document.querySelector("#prix");
+  var montantComplementaire = document.querySelector("#FRA_AUT_MONT1");
+
   // Ajout des écouteurs d'événements pour chaque champ d'entrée
   repas.addEventListener("input", calculFrais);
   nuit.addEventListener("input", calculFrais);
   etape.addEventListener("input", calculFrais);
   km.addEventListener("input", calculFrais);
+
+  //Activer l'event lorsque Prix & libelle sont complété
+  prix.addEventListener("input", AjoutPrix);
+  libelle.addEventListener("input", AjoutPrix);
 
   // Fonction de calcul des frais
   function calculFrais()
@@ -237,8 +267,25 @@
     }
     else
     {
-      montant.value = "";
+      montant.value = 0;
     }
+
+    return montant.value;
+  }
+
+  function AjoutPrix()
+  {
+    if (Boolean(libelle.value) && Boolean(prix.value))
+    {
+      var result = parseFloat(calculFrais()) + parseFloat(prix.value);
+      montantComplementaire.value = result;
+    }
+    else
+    {
+      montantComplementaire.value = 0;
+    }
+
+    return montantComplementaire.value;
   }
 </script>
 
