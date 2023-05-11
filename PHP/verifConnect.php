@@ -18,7 +18,7 @@
   $resultRequest = $connect->query($request);
   $ligneUser = $resultRequest->fetch();
 
-  if($_SESSION["connectLogin"] == $login && $_SESSION["connectMdp"] == $password)
+  if($_SESSION["connectLogin"] == $ligneUser["login"] && $_SESSION["connectMdp"] == $ligneUser["mdp"])
   {
     // Si l'utilisateur se trouve bien dans la BDD
     if($ligneUser != false)
