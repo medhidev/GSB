@@ -2,8 +2,8 @@
   //Compte Administrateur
   $host = "localhost";
   $nomBdd = "gsb";
-  $login = "AdminGSB";
-  $passwordBdd = "adminpassword";
+  $login = "root";
+  $passwordBdd = "";
 
   // Connection BDD
   try {
