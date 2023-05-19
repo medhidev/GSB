@@ -15,10 +15,10 @@ header {
     padding: 0 5%;
 }
 
-/* */
 header img{
   width: 70px;
 }
+
 body {
     margin-top: 200px;
     padding: 0;
@@ -75,35 +75,21 @@ input[type=submit] :hover {
 
 
 .form-submit-button {
-
-background: #B9DFFF;
-
-color: #fff;
-
-border: 1px solid #eee;
-
-border-radius: 20px;
-
-box-shadow: 5px 5px 5px #eee;
-
-text-shadow:none;
-
+  background: #B9DFFF;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow:none;
 }
 
 .form-submit-button:hover {
-
-background: #016ABC;
-
-color: #fff;
-
-border: 1px solid #eee;
-
-border-radius: 20px;
-
-box-shadow: 5px 5px 5px #eee;
-
-text-shadow:none;
-
+  background: #016ABC;
+  color: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+  text-shadow:none;
 }
 
 label{
@@ -152,19 +138,3 @@ logo{
     height: 90px;
     margin-right: 10px;
 }
-/*
-<style type="text/css">
-    <!-- body {background-color: white; color:5599EE; } 
-    .titre {
-      width: 180;
-      clear: left;
-      float: left;
-    }
-
-    .zone {
-      float: left;
-      color: 7091BB
-    }
-    -->
-  </style>
-*/

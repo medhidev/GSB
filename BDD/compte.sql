@@ -1,7 +1,11 @@
--- Creations des comptes de la base de données
-CREATE USER 'AdminGSB'@'localhost' IDENTIFIED BY 'adminpassword';
-CREATE USER 'UserGSB'@'localhost' IDENTIFIED BY 'gsbpassword';
+--
+-- Compte d'accès aux BDD et aux Tables
+--
 
--- droit utilsateur BDD
-GRANT SELECT, DELETE, INSERT, UPDATE ON gsb.* TO 'AdminGSB'@'localhost';
-GRANT SELECT, DELETE, INSERT, UPDATE ON gsb.visiteur TO 'UserGSB'@'localhost';
+-- Creations des comptes de la base de données
+CREATE USER 'Admin'@'localhost' IDENTIFIED BY 'adminpassword';
+GRANT SELECT, DELETE, INSERT, UPDATE ON saisies.* TO 'Admin'@'localhost';
+
+CREATE USER 'User'@'localhost' IDENTIFIED BY 'userpassword';
+GRANT SELECT, INSERT ON compte.* TO 'User'@'localhost';
+GRANT SELECT, INSERT ON infos.* TO 'User'@'localhost';

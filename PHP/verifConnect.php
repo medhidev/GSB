@@ -10,43 +10,46 @@
   $password = $_POST["password"];
 
   // Données de connection
-  $_SESSION["connectLogin"] = $login;
-  $_SESSION["connectMdp"] = $password;
+  $_SESSION["Login"] = $login;
+  $_SESSION["Password"] = $password;
 
   // Requêtes SQL
-  $request = "SELECT * FROM visiteur WHERE login ='$login' AND mdp = '$password'";
-  $resultRequest = $connect->query($request);
-  $ligneUser = $resultRequest->fetch();
+  $requestVisiteur = "SELECT * FROM compte.visiteur WHERE login ='$login' AND mdp = '$password'";
+  $resultRequestVisiteur = $connect->query($requestVisiteur);
+  $ligneVisiteur = $resultRequestVisiteur->fetch();
 
-  if($_SESSION["connectLogin"] == $ligneUser["login"] && $_SESSION["connectMdp"] == $ligneUser["mdp"])
+  $requestComptable = "SELECT * FROM compte.comptable WHERE login ='$login' AND mdp = '$password'";
+  $resultRequestComptable = $connect->query($requestComptable);
+  $ligneComptable = $resultRequestComptable->fetch();
+
+  // Visiteur
+  if($_SESSION["Login"] == $ligneVisiteur["login"] && $_SESSION["Password"] == $ligneVisiteur["mdp"])
   {
     // Si l'utilisateur se trouve bien dans la BDD
-    if($ligneUser != false)
-    {
-      // Si l'utilsateur est un comptable
-      if($ligneUser['compta'] == 'OUI')
-      {
-        header('Location: ../comptables/formValidFrais.php');
-      }
-
-      else
-      {
-        header('Location: ../visiteurs/formSaisieFrais.php');
-      }
-    }
+    if($ligneVisiteur != false)
+      header('Location: ../visiteurs/formSaisieFrais.php');
 
     else
-    {
-      // Retourner vers la page de login
-      header('Location: ../index.html');
-      echo erreur("Utilisateur Invalide");
-    }
+      exit;
+  }
+
+  // Comptable
+  else if ($_SESSION["Login"] == $ligneComptable["login"] && $_SESSION["Password"] == $ligneComptable["mdp"])
+  {
+    // Si l'utilisateur se trouve bien dans la BDD
+    if($ligneComptable != false)
+      header('Location: ../comptables/formValidFrais.php');
+
+    else
+      exit;
   }
 
   else
   {
-    header('Location: ../index.html');
-    echo erreur("Session Invalide");
+    // Redirection vers la page de connection avec le message d'erreur
+    $erreur = "Session invalide";
+    header('Location: ../index.html?erreur='.urlencode($erreur));
+    exit();
   }
 
   // Fonction de traitement en cas d'erreur

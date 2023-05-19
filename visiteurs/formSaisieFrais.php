@@ -3,29 +3,29 @@
   session_start();
 
   // Requêtes SQL
-  require_once("../PHP/include/connection.inc.php");
-  $reqRepas = "SELECT montant FROM fraisforfait WHERE id='REP'";
-  $reqNuit = "SELECT montant FROM fraisforfait WHERE id='NUI'";
-  $reqEtape = "SELECT montant FROM fraisforfait WHERE id='ETP'";
-  $reqKm = "SELECT montant FROM fraisforfait WHERE id='KM'";
+  require_once("../PHP/include/infos.inc.php");
+  $reqRepas = "SELECT montant FROM info.fraisforfait WHERE id='REP'";
+  $reqNuit = "SELECT montant FROM info.fraisforfait WHERE id='NUI'";
+  $reqEtape = "SELECT montant FROM info.fraisforfait WHERE id='ETP'";
+  $reqKm = "SELECT montant FROM info.fraisforfait WHERE id='KM'";
 
   // Données Repas
-  $verifRepas = $connect->query($reqRepas);
+  $verifRepas = $connectInfo->query($reqRepas);
   $ligneRepas = $verifRepas->fetch();
   $prixRepas = $ligneRepas["montant"];
 
   // Données Nuit
-  $verifNuit = $connect->query($reqNuit);
+  $verifNuit = $connectInfo->query($reqNuit);
   $ligneNuit = $verifNuit->fetch();
   $prixNuit = $ligneNuit["montant"];
 
   // Données Etape
-  $verifEtape= $connect->query($reqEtape);
+  $verifEtape= $connectInfo->query($reqEtape);
   $ligneEtape = $verifEtape->fetch();
   $prixEtape = $ligneEtape["montant"];
 
   // Données Km
-  $verifKm = $connect->query($reqKm);
+  $verifKm = $connectInfo->query($reqKm);
   $ligneKm = $verifKm->fetch();
   $prixKm = $ligneKm["montant"];
 ?>
@@ -61,7 +61,7 @@
   <div name="droite" style="float:left;width:80%;">
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
 
-      <form name="formSaisieFrais" method="post" action="../PHP/enregSaisieFrais.php" style="margin-top: 50px;" onsubmit="emptyField()">
+      <form name="formSaisieFrais" method="post" action="../PHP/visiteurs/envoieSaisieVisiteur.php" style="margin-top: 50px;" onsubmit="emptyField()">
         <h1>Saisie | Gestion des Frais</h1><br>
         <h2>Periode Engagement</h2>
         <table>

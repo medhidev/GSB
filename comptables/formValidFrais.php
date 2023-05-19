@@ -51,10 +51,10 @@
 		<label class="titre">Choisir le visiteur :</label>
 		<select name="lstVisiteur" class="zone">
 			<?php
-				require("../PHP/include/connection.inc.php");
+				require("../PHP/include/login.inc.php");
 
 				//requetes des nom des visiteurs
-				$reqSQL = "SELECT nom, id, compta FROM visiteur";
+				$reqSQL = "SELECT nom, id FROM compte.visiteur";
 				$result=$connect->query($reqSQL);
 				$ligne = $result->fetch();
 
@@ -64,8 +64,7 @@
 					// On stocke les données de la classe dans des variables
 					$num = $ligne["id"]; // numéro ID
 					$nomVisiteur = $ligne["nom"]; // Nom visteur
-					if ($ligne["compta"] != 'OUI')
-						echo "<option value='$num'>$nomVisiteur</option>";
+					echo "<option value='$num'>$nomVisiteur</option>";
 
 					// Lecture de la ligne suivante dans le jeu d'enregistrements
 					$ligne = $result->fetch();
