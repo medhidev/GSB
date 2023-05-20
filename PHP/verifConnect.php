@@ -25,6 +25,7 @@
   // Visiteur
   if($_SESSION["Login"] == $ligneVisiteur["login"] && $_SESSION["Password"] == $ligneVisiteur["mdp"])
   {
+    $_SESSION["idVisiteur"] = $ligneVisiteur["id"];
     // Si l'utilisateur se trouve bien dans la BDD
     if($ligneVisiteur != false)
       header('Location: ../visiteurs/formSaisieFrais.php');

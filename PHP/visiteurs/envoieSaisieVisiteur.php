@@ -8,16 +8,10 @@ require_once("../include/saisie.inc.php");
             Requêtes SQL
 ------------------------------- */
 
-$requestVisiteur = "SELECT id FROM compte.visiteur";
+$login = $_SESSION["Login"];
+$requestVisiteur = "SELECT id FROM compte.visiteur WHERE login='$login'";
 $resultRequestVisiteur = $connect->query($requestVisiteur);
-if (!$resultRequestVisiteur) {
-    print_r($connect->errorInfo());
-}
 $ligneVisiteur = $resultRequestVisiteur->fetch();
-
-$requestFraisForfait = "SELECT montant FROM infos.fraisforfait";
-$resultRequestFraisForfait = $connect->query($requestFraisForfait);
-$ligneFraisForfait = $resultRequestFraisForfait->fetch();
 
 // idFraisForfait
 $reqETP = "SELECT id FROM infos.fraisforfait WHERE id = 'ETP'";
@@ -25,7 +19,15 @@ $reqKM = "SELECT id FROM infos.fraisforfait WHERE id = 'KM'";
 $reqNUI = "SELECT id FROM infos.fraisforfait WHERE id = 'NUI'";
 $reqREP = "SELECT id FROM infos.fraisforfait WHERE id = 'REP'";
 
+$resultreqETP = $connectInfo->query($reqETP);
+$resultreqKM = $connectInfo->query($reqKM);
+$resultreqNUI = $connectInfo->query($reqNUI);
+$resultreqREP = $connectInfo->query($reqREP);
 
+$ligneETP = $resultreqETP->fetch();
+$ligneKM = $resultreqKM->fetch();
+$ligneNUI = $resultreqNUI->fetch();
+$ligneREP = $resultreqREP->fetch();
 
 /*  -------------------------------
         Données utilisateur
@@ -42,18 +44,8 @@ $km = $_POST["FRA_KM"];
 $repasMidi = $_POST["FRA_REPAS"];
 
 // Sauvegarder pour accès au comptable
-$_SESSION["quantite"] = $nuit*$ligneFraisForfait["montant"] +
-$etape*$ligneFraisForfait["montant"] + $km*$ligneFraisForfait["montant"] + $repasMidi*$ligneFraisForfait["montant"];
-
-$resultreqETP = $connect->query($reqETP);
-$resultreqKM = $connect->query($reqKM);
-$resultreqNUI = $connect->query($reqNUI);
-$resultreqREP = $connect->query($reqREP);
-
-$ligneETP = $resultreqETP->fetch();
-$ligneKM = $resultreqKM->fetch();
-$ligneNUI = $resultreqNUI->fetch();
-$ligneREP = $resultreqREP->fetch();
+$_SESSION["quantite"] = $nuit*$_SESSION["prixNuit"] +
+$etape*$_SESSION["prixEtape"] + $km*$_SESSION["prixKm"] + $repasMidi*$_SESSION["prixRepas"];
 
 $idETP = $ligneETP["id"];
 $idKM = $ligneKM["id"];
@@ -70,7 +62,10 @@ try {
         ('$idVisiteur', '$mois', '$idNUI', '$nuit'),
         ('$idVisiteur', '$mois', '$idREP', '$repasMidi')";
 
-    $insertRequest = $connect->exec($reqInsert);
+    $connectSaisie->exec($reqInsert);
+    echo "la requête a été envoyé avec succès !"."<br>";
+    echo $reqInsert;
+
 } catch (Exception $e) {
     die("requête impossible" . $e->getMessage());
 }

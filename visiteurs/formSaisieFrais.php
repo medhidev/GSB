@@ -4,30 +4,30 @@
 
   // Requêtes SQL
   require_once("../PHP/include/infos.inc.php");
-  $reqRepas = "SELECT montant FROM info.fraisforfait WHERE id='REP'";
-  $reqNuit = "SELECT montant FROM info.fraisforfait WHERE id='NUI'";
-  $reqEtape = "SELECT montant FROM info.fraisforfait WHERE id='ETP'";
-  $reqKm = "SELECT montant FROM info.fraisforfait WHERE id='KM'";
+  $reqRepas = "SELECT montant FROM infos.fraisforfait WHERE id='REP'";
+  $reqNuit = "SELECT montant FROM infos.fraisforfait WHERE id='NUI'";
+  $reqEtape = "SELECT montant FROM infos.fraisforfait WHERE id='ETP'";
+  $reqKm = "SELECT montant FROM infos.fraisforfait WHERE id='KM'";
 
   // Données Repas
   $verifRepas = $connectInfo->query($reqRepas);
   $ligneRepas = $verifRepas->fetch();
-  $prixRepas = $ligneRepas["montant"];
+  $_SESSION["prixRepas"] = $ligneRepas["montant"];
 
   // Données Nuit
   $verifNuit = $connectInfo->query($reqNuit);
   $ligneNuit = $verifNuit->fetch();
-  $prixNuit = $ligneNuit["montant"];
+  $_SESSION["prixNuit"] = $ligneNuit["montant"];
 
   // Données Etape
   $verifEtape= $connectInfo->query($reqEtape);
   $ligneEtape = $verifEtape->fetch();
-  $prixEtape = $ligneEtape["montant"];
+  $_SESSION["prixEtape"] = $ligneEtape["montant"];
 
   // Données Km
   $verifKm = $connectInfo->query($reqKm);
   $ligneKm = $verifKm->fetch();
-  $prixKm = $ligneKm["montant"];
+  $_SESSION["prixKm"] = $ligneKm["montant"];
 ?>
 
 <head>
@@ -51,8 +51,8 @@
         <ul>
           <li><a href="formSaisieFrais.php">Nouveau</a></li>
           <li><a href="formConsultFrais.php">Consulter</a></li>
-        </ul>
-        <li id="bottom">Connecté en tant que: <br><?php echo $_SESSION["connectLogin"] ?></li>
+        </ul><br><br>
+        <li id="bottom">Connecté en tant que: <br><?php echo $_SESSION["Login"]; ?></li>
       </ul>
     </div>
   </div>
@@ -100,7 +100,7 @@
             </td>
             <td>
               <input type="number" name="FRA_REPAS" class="zone" id="FRA_REPAS" style="width: 30%;"/>
-              <?php echo "(".$prixRepas.") unit";?>
+              <?php echo "(".$_SESSION["prixRepas"].") unit";?>
             </td>
           </tr>
           <tr>
@@ -111,7 +111,7 @@
             </td>
             <td>
               <input type="number" name="FRA_NUIT" class="zone" id="FRA_NUIT" style="width: 30%;"/>
-              <?php echo "(".$prixNuit.") unit";?>
+              <?php echo "(".$_SESSION["prixNuit"].") unit";?>
             </td>
           </tr>
           <tr>
@@ -122,7 +122,7 @@
             </td>
             <td>
               <input type="number" name="FRA_ETAP" class="zone" id="FRA_ETAP" style="width: 30%;"/>
-              <?php echo "(".$prixEtape.") unit";?>
+              <?php echo "(".$_SESSION["prixEtape"].") unit";?>
             </td>
           </tr>
           <tr>
@@ -133,7 +133,7 @@
             </td>
             <td>
               <input type="number" name="FRA_KM" class="zone" id="FRA_KM" style="width: 30%;" />
-              <?php echo "(".$prixKm.") unit";?>
+              <?php echo "(".$_SESSION["prixKm"].") unit";?>
             </td>
           </tr>
           <tr>
@@ -261,8 +261,8 @@
     // Vérification si tous les champs sont remplis
     if (Boolean(repas.value) && Boolean(nuit.value) && Boolean(etape.value) && Boolean(km.value))
     {
-      var result = parseInt(repas.value)* <?php echo $prixRepas;?> + parseInt(nuit.value)* <?php echo $prixNuit;?>
-      + parseInt(etape.value)* <?php echo $prixEtape;?> + parseInt(km.value)* <?php echo $prixKm;?>;
+      var result = parseInt(repas.value)* <?php echo $_SESSION["prixRepas"];?> + parseInt(nuit.value)* <?php echo $_SESSION["prixNuit"];?>
+      + parseInt(etape.value)* <?php echo $_SESSION["prixEtape"];?> + parseInt(km.value)* <?php echo $_SESSION["prixKm"];?>;
       montant.value = result;
     }
     else
