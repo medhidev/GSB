@@ -51,8 +51,8 @@
 	<form action="../PHP/comptables/rechercheFrais.php" method="post">
 		<p>
 			<br><br>
-			<label class="titre" style="text-align: center;">Mois :</label>
-			<input class="zone" type="text" name="dateValid" size="13" required>
+			<label class="titre">Mois (2 chiffres):</label>
+			<input class="zone" type="text" name="dateValid" size="13" required>&nbsp;&nbsp;
 			<input type="submit" value="rechercher">
 		</p>
 		<label class="titre">Choisir le visiteur :</label>

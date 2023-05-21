@@ -56,15 +56,28 @@ $idREP = $ligneREP["id"];
             Insertion BDD
 ------------------------------- */
 
-try { 
-    $reqInsert = "INSERT INTO saisies.saisieslignefraisforfait VALUES ('$idVisiteur', '$mois', '$idETP', '$etape'),
-        ('$idVisiteur', '$mois', '$idKM', '$km'),
-        ('$idVisiteur', '$mois', '$idNUI', '$nuit'),
-        ('$idVisiteur', '$mois', '$idREP', '$repasMidi')";
+try {
+    $reqInsertPK = "INSERT INTO saisies.fichefrais (idVisiteur, mois) VALUES ('$idVisiteur', '$mois'),
+        ('$idVisiteur', '$mois'),
+        ('$idVisiteur', '$mois'),
+        ('$idVisiteur', '$mois')";
 
-    $connectSaisie->exec($reqInsert);
+    $reqInsertFK = "INSERT INTO saisies.saisieslignefraisforfait (idVisiteur, mois, idFraisForfait, quantite) VALUES ('$idVisiteur', '$mois', '$idETP', '$etape'),
+        ('$idVisiteur', '$mois', '$idETP', '$etape'),
+        ('$idVisiteur', '$mois', '$idETP', '$etape'),
+        ('$idVisiteur', '$mois', '$idETP', '$etape')";
+
+    $connectSaisie->exec($reqInsertPK);
+    $connectSaisie->exec($reqInsertFK);
+
+    $affected = $connectSaisie->exec($sql);
+    $err = $connectSaisie->errorInfo();
+    $err = $connectSaisie->errorInfo();
+    var_dump($err);
+
     echo "la requête a été envoyé avec succès !"."<br>";
-    echo $reqInsert;
+    echo $reqInsertPK;
+    echo $reqInsertFK;
 
 } catch (Exception $e) {
     die("requête impossible" . $e->getMessage());

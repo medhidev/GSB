@@ -91,3 +91,9 @@ CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
   PRIMARY KEY (id),
   FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
+
+-- Edit de la table (ajout des UID)
+
+ALTER TABLE compte.visiteur
+ADD uid INT AUTO_INCREMENT,
+ADD INDEX (uid);
