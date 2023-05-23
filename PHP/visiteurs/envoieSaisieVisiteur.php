@@ -58,8 +58,6 @@ $idREP = $ligneREP["id"];
 
 try {
     $reqInsertPK = "INSERT INTO saisies.fichefrais (idVisiteur, mois) VALUES ('$idVisiteur', '$mois')";
-    // code pour éviter la duplication
-
     $connectSaisie->exec($reqInsertPK);
 
     $reqAfficheFicheFrais = "SELECT * FROM saisies.fichefrais";
