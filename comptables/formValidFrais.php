@@ -31,15 +31,6 @@
 			<img src="../images/gsb.png" width="100" height="60"/>
 		</a>
 	</div>
-	<div name="menu" >
-		<h2>Outils</h2>
-		<ul>
-			<li>Frais</li>
-			<ul>
-				<li><a href="../download/frais.txt" download="frais_visiteur.txt" >Enregistrer operation</a></li>
-			</ul>
-		</ul>
-	</div>
 </div>
 <div name="droite" style="float:left; width:80%;">
 	<div name="haut" style="margin: 2 2 2 2 ;height:10%;float:left;">

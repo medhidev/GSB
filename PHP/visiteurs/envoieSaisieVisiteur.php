@@ -5,6 +5,10 @@ require_once("../include/login.inc.php");
 require_once("../include/saisie.inc.php");
 
 /*  -------------------------------
+        Partie Frais Forfait
+------------------------------- */
+
+/*  -------------------------------
             Requêtes SQL
 ------------------------------- */
 
@@ -43,10 +47,6 @@ $etape = $_POST["FRA_ETAP"];
 $km = $_POST["FRA_KM"];
 $repasMidi = $_POST["FRA_REPAS"];
 
-// Sauvegarder pour accès au comptable
-$_SESSION["quantite"] = $nuit*$_SESSION["prixNuit"] +
-$etape*$_SESSION["prixEtape"] + $km*$_SESSION["prixKm"] + $repasMidi*$_SESSION["prixRepas"];
-
 $idETP = $ligneETP["id"];
 $idKM = $ligneKM["id"];
 $idNUI = $ligneNUI["id"];
@@ -57,29 +57,58 @@ $idREP = $ligneREP["id"];
 ------------------------------- */
 
 try {
-    $reqInsertPK = "INSERT INTO saisies.fichefrais (idVisiteur, mois) VALUES ('$idVisiteur', '$mois'),
-        ('$idVisiteur', '$mois'),
-        ('$idVisiteur', '$mois'),
-        ('$idVisiteur', '$mois')";
-
-    $reqInsertFK = "INSERT INTO saisies.saisieslignefraisforfait (idVisiteur, mois, idFraisForfait, quantite) VALUES ('$idVisiteur', '$mois', '$idETP', '$etape'),
-        ('$idVisiteur', '$mois', '$idETP', '$etape'),
-        ('$idVisiteur', '$mois', '$idETP', '$etape'),
-        ('$idVisiteur', '$mois', '$idETP', '$etape')";
+    $reqInsertPK = "INSERT INTO saisies.fichefrais (idVisiteur, mois) VALUES ('$idVisiteur', '$mois')";
+    // code pour éviter la duplication
 
     $connectSaisie->exec($reqInsertPK);
+
+    $reqAfficheFicheFrais = "SELECT * FROM saisies.fichefrais";
+    $resultSaisie = $connectSaisie->query($reqAfficheFicheFrais);
+    $AfficheFichefrais = $resultSaisie->fetch();
+
+    $idVisiteurBDD = $AfficheFichefrais["idVisiteur"];
+    $moisBDD = $AfficheFichefrais["mois"]; 
+
+    $reqInsertFK = "INSERT INTO saisies.saisieslignefraisforfait (idVisiteur, mois, idFraisForfait, quantite) VALUES ('$idVisiteurBDD', '$moisBDD', '$idETP', '$etape'),
+        ('$idVisiteurBDD', '$moisBDD', '$idKM', '$km'),
+        ('$idVisiteurBDD', '$moisBDD', '$idNUI', '$nuit'),
+        ('$idVisiteurBDD', '$moisBDD', '$idREP', '$repasMidi')";
+
     $connectSaisie->exec($reqInsertFK);
-
-    $affected = $connectSaisie->exec($sql);
-    $err = $connectSaisie->errorInfo();
-    $err = $connectSaisie->errorInfo();
-    var_dump($err);
-
-    echo "la requête a été envoyé avec succès !"."<br>";
-    echo $reqInsertPK;
-    echo $reqInsertFK;
 
 } catch (Exception $e) {
     die("requête impossible" . $e->getMessage());
 }
+
+/*  -------------------------------
+        Partie Hors Forfait
+------------------------------- */
+
+// Libelle et date HF
+$libelle = $_POST["FRA_AUT_LIB1"];
+$date = (string)date('d.m.Y');
+
+// Montant total
+$_SESSION["quantite"] = $nuit*$_SESSION["prixNuit"] +
+$etape*$_SESSION["prixEtape"] + $km*$_SESSION["prixKm"] + $repasMidi*$_SESSION["prixRepas"];
+$montant = $_SESSION["quantite"];
+
+/*  -------------------------------
+            Insertion BDD
+------------------------------- */
+
+$reqInsertHF = "INSERT INTO saisies.lignefraishorsforfait VALUES
+    ('$idVisiteurBDD', '$moisBDD', '$libelle', '$date', '$montant')";
+
+$resultHFInsert = $connectSaisie->exec($reqInsertHF);
+
+
+// Affichage
+echo $reqInsertPK.'<br>';
+echo $reqInsertFK.'<br>';
+echo $reqInsertHF.'<br>';
+
+
+
+
 ?>

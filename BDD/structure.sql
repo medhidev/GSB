@@ -82,14 +82,13 @@ CREATE TABLE IF NOT EXISTS `SaisiesLigneFraisForfait` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
-  `id` int(11) NOT NULL auto_increment,
-  `idVisiteur` char(4) NOT NULL,
+  `id` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `libelle` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `montant` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
+  FOREIGN KEY (`id`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
 
 -- Edit de la table (ajout des UID)

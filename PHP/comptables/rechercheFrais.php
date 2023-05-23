@@ -9,6 +9,10 @@ $idVisiteur = $_POST["lstVisiteur"];
 $moisVisiteur = $_POST["dateValid"];
 
 /*  -------------------------------
+        Partie Frais Forfait
+------------------------------- */
+
+/*  -------------------------------
             Requêtes SQL
 ------------------------------- */
 
@@ -40,8 +44,22 @@ if(isset($idVisiteur ) && isset($moisVisiteur))
 
 }
 else
+    //redirection vers la page de départ (en cas d'erreur)
     header("Location: ../../comptables/formValidFrais.php");
 
+/*  -------------------------------
+        Partie Frais Forfait
+------------------------------- */
+
+/*  -------------------------------
+            Requêtes SQL
+------------------------------- */
+
+
+
+/*  -------------------------------
+    Envoie des modification Sasies
+------------------------------- */
 
 
 ?>
