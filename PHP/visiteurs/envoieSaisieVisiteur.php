@@ -93,20 +93,25 @@ $reqInsertHF = "INSERT INTO saisies.lignefraishorsforfait VALUES
 $resultHFInsert = $connectSaisie->exec($reqInsertHF);
 
 // Affichage
-// echo $reqInsertFK.'<br>';
-// echo $reqInsertHF.'<br>';
+echo $reqInsertFK.'<br>';
+echo $reqInsertHF.'<br>';
 
 /*  -------------------------------
     Envoie fiche frais → comptable
 ------------------------------- */
 
-$reqNbJustificatif = "SELECT COUNT(*) FROM saisies.saisieslignefraisforfait WHERE id='$idVisiteur'";
+$reqNbJustificatif = "SELECT COUNT(*) FROM saisies.saisieslignefraisforfait WHERE idVisiteur='$idVisiteur'";
+echo $reqNbJustificatif.'<br>';
 $resultNbJustificatif = $connectSaisie->query($reqNbJustificatif);
 $NbJustificatif = $resultNbJustificatif->fetch();
-$NbJustificatif["id"]
+// erreur ici
+$Justificatif = $NbJustificatif["COUNT(*)"];
+echo $Justificatif.'<br>';
 
-$reqInsertPK = "INSERT INTO saisies.fichefrais (idVisiteur, mois) VALUES ('$idVisiteur', '$mois', '$NbJustificatif', '', '', '')";
+$reqInsertPK = "INSERT INTO saisies.fichefrais  VALUES ('$idVisiteur', '$mois', '$Justificatif', '$montant', '$date', NULL)";
 $connectSaisie->exec($reqInsertPK);
+
+echo $reqInsertPK.'<br>';
 
 // echo "<script>alert('Votre commande a été envoyer avec succès !')</script>";
 ?>
