@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page d'accueil des visiteurs</title>
+  <title>Ma page web</title>
   <style>
-    /* Style CSS pour la mise en forme */
+    /* Styles CSS pour la mise en forme */
     body {
       font-family: Arial, sans-serif;
       background-color: #c9daff;
+      margin: 0;
+      padding: 0;
     }
     header {
       background-color:#77AADD;
@@ -18,35 +20,6 @@
     }
     h1 {
       margin-top: 0;
-    }
-    .div-gauche {
-      float: left;
-      width: 18%;
-      background-color: var(--text-color);
-      height: 100%;
-    }
-    .container {
-      margin: 20px;
-      padding: 20px;
-      background-color: #c9daff;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-    .container p {
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #333;
-      color: #c9daff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #555;
     }
     .container {
       display: flex;
@@ -89,10 +62,10 @@
 </head>
 <body>
   <header>
-    <h1>Page d'accueil des visiteurs</h1>
+    <h1>Ma page web</h1>
   </header>
   <div class="container">
-    <div clase="div-gauche ">
+    <div class="left-column">
       <h2>Menu</h2>
       <ul>
         <li><a href="#">Accueil</a></li>
@@ -100,11 +73,9 @@
         <li><a href="#">Contact</a></li>
       </ul>
     </div>
-  </div>
-  <div class="container">
-    <h2>Bienvenue sur notre site !</h2>
-    <img src="images/téléchargement-removebg-preview.png" >
-    <p></p>
+    <div class="main-content">
+      <!-- Contenu principal de la page -->
+    </div>
   </div>
 </body>
 </html>

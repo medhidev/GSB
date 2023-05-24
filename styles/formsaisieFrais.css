@@ -1,79 +1,20 @@
-/* Styles pour la page de saisie des frais */
 body {
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
-h1, h2 {
-  text-align: center;
+html {
+  height: -webkit-fill-available;
 }
 
-label.titre {
-  float: left;
-  width: 250px;
-  font-weight: bold;
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-input.zone {
-  width: 100px;
-}
-
-div[name=gauche] {
-  float: left;
-  width: 18%;
-  background-color: white;
-  height: 100%;
-}
-
-div[name=droite] {
-  float: left;
-  width: 80%;
-}
-
-div[name=bas] {
-  margin: 10px 2px 2px 2px;
-  clear: left;
-  background-color: #77AADD;
-  color: white;
-  height: 88%;
-  padding: 10px;
-}
-
-div#lignes {
-  clear: left;
-  margin-top: 10px;
-}
-
-input#but1 {
-  margin-left: 10px;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-ul li {
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid white;
-}
-
-ul li a {
-  text-decoration: none;
-  display: block;
-  padding: 5px;
-  background-color: #77AADD;
-  color: white;
-  border-bottom: 1px solid white;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-ul li a:hover {
-  background-color: white;
-  color: #77AADD;
+.scrollarea {
+  overflow-y: auto;
 }
