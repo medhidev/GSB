@@ -1,21 +1,14 @@
 ﻿--
--- Contenu de la table `FraisForfait`   
+-- Contenu Infos
 --
 
-INSERT INTO `FraisForfait` (`id`, `libelle`, `montant`) VALUES
+INSERT INTO Infos.`FraisForfait` (`id`, `libelle`, `montant`) VALUES
 ('ETP', 'Forfait Etape', 110.00),
 ('KM', 'Frais Kilométrique', 0.62),
 ('NUI', 'Nuitée Hôtel', 80.00),
 ('REP', 'Repas Restaurant', 29.00);
---
--- Contenu de la table `LigneFraisForfait`
---
 
---
--- Contenu de la table `Etat`
---
-
-INSERT INTO `Etat` (`id`, `libelle`) VALUES
+INSERT INTO Infos.`Etat` (`id`, `libelle`) VALUES
 ('RB', 'Remboursée'),
 ('CL', 'Saisie clôturée'),
 ('CR', 'Fiche créée, saisie en cours'),
@@ -24,10 +17,10 @@ INSERT INTO `Etat` (`id`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Contenu de la table `Visiteur`
+-- Visiteurs
 --
 
-INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES
+INSERT INTO compte.`visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES
 ('a131', 'Villechalane', 'Louis', 'lvillachane', 'jux7g', '8 rue des Charmes', '46000', 'Cahors', '2005-12-21'),
 ('a17', 'Andre', 'David', 'dandre', 'oppg5', '1 rue Petit', '46200', 'Lalbenque', '1998-11-23'),
 ('a55', 'Bedos', 'Christian', 'cbedos', 'gmhxd', '1 rue Peranud', '46250', 'Montcuq', '1995-01-12'),
@@ -56,8 +49,11 @@ INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, 
 ('f39', 'Frémont', 'Fernande', 'ffremont', 'xs5tq', '4 route de la mer', '13012', 'Allauh', '1998-10-01'),
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01');
 
-/*AJOUT COMPLEMENTAIRE AUX INSERT DE LA BDD*/
+--
+-- Comptables
+--
 
--- Insertion des comptes GSB de connection (Formulaire)
-INSERT INTO visiteur(id, login, mdp, compta)
-VALUES('a101', 'MedhiGSB', '1mot2passCQRtkt', 'OUI'), ('a102', 'CiranGSB', 'CAmoiCEMDP', 'OUI'), ('a103', 'MichaelGSB', '1CompteReseauNul', 'OUI');
+INSERT INTO compte.`comptable` (id, login, mdp)
+VALUES('a101', 'Medhi', '1mot2passCQRtkt'),
+('a102', 'Ciran', 'CAmoiCEMDP'),
+('a103', 'Michael', '1CompteReseauNul');

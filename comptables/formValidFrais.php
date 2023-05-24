@@ -1,129 +1,141 @@
 <html>
+
 <head>
-	<link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
-	<title>Validation Frais | Comptable</title>     
-	<style type="text/css">
-		body {
-			background-color: white;
-			color:EE8855;
-			font-family: Arial;
-		} 
-			
-		.titre {
-			width : 180 ; 
-			clear:left;
-			float:left;
-		} 
-
-		.zone {
-			float : left;
-			color:CC8855
-		}
-	</style>
+  <link href="../styles/formsaisieFrais.css" >
+  <link href="../styles/bootstrap/bootstrap.min.css" rel="stylesheet">  
+  <link href="../styles/formValidFrais.css" rel="stylesheet" type="text/css" />
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validation des frais de visite</title>
 </head>
+
 <body>
-<div name="gauche" style="clear:left:;float:left;width:18%; background-color:white; height:100%;">
-	<div name="coin" style="height:10%;text-align:center;">
-		<a href="../index.php">
-			<img src="../images/gsb.png" width="100" height="60"/>
-		</a>
-	</div>
-	<div name="menu" >
-		<h2>Outils</h2>
-		<ul>
-			<li>Frais</li>
-			<ul>
-				<li><a href="formValidFrais.php" >Enregistrer operation</a></li>
-			</ul>
-		</ul>
-	</div>
+  <main class="d-flex flex-nowrap h-100">
+
+    <div class="d-flex flex-column w-25 flex-shrink-0 p-3 text-bg-dark">
+      <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <a href="../PHP/deconnection.php"><img class="mb-4" src="../images/gsb.png" alt="" width="52" height="37"></a>
+        <span class="fs-4">Gestion des Frais</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a href="javascript:location.reload();" class="nav-link active" aria-current="page">
+            <i class="fas fa-check-circle"></i>
+            Validation des frais
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mw-100 w-75 p-3 text-bg-warning">
+      <form name="formValidFrais" method="post" action="enregValidFrais.php">
+        <div class="row g-3">
+        <select class="col-sm-6 form-select w-75" aria-label="Choisir le visiteur ">
+          <option selected>Choisir le visiteur </option>
+          <?php
+            require("../PHP/include/login.inc.php");
+
+            //requetes des nom des visiteurs
+            $reqSQL = "SELECT nom, id FROM compte.visiteur";
+            $result=$connect->query($reqSQL);
+            $ligne = $result->fetch();
+
+            // Boucle sur tous le jeu d'enregistrement
+            while ($ligne != false)
+            {
+              // On stocke les données de la classe dans des variables
+              $num = $ligne["id"]; // numéro ID
+              $nomVisiteur = $ligne["nom"]; // Nom visteur
+              echo "<option value='$num'>$nomVisiteur</option>";
+
+              // Lecture de la ligne suivante dans le jeu d'enregistrements
+              $ligne = $result->fetch();
+            }
+          ?>
+        </select>
+        <div class="col-sm-6 w-25 form-floating">
+          <input type="text" name="dateValid" class="form-control" id="floatingInput" placeholder="MM">
+          <label for="floatingInput">Mois</label>
+        </div>
 </div>
-<div name="droite" style="float:left; width:80%;">
-	<div name="haut" style="margin: 2 2 2 2 ;height:10%;float:left;">
-		<h1>Validation des Frais par visiteur</h1>
-	</div>	
-	<div name="bas" style="margin : 10 2 2 2;clear:left;background-color:EE8844;color:white;height:88%;">
-	<form name="formValidFrais" method="post" action="enregValidFrais.php">
-		<br><br>
-		<label class="titre">Choisir le visiteur :</label>
-		<select name="lstVisiteur" class="zone">
-			<?php
-				require("..\PHP\includes\connection.php");
+    
+        <hr class="my-4">
 
-				//requetes des nom des visiteurs
-				$reqSQL = "SELECT nom, id, compta FROM visiteur";
-				$result=$connect->query($reqSQL);
-				$ligne = $result->fetch();
+        <h4 class="mb-3">Frais inclus dans le forfait</h4>
+        <table class="table table-bordered">
+          <thead class="table-primary">
+            <tr class="text-center">
+              <th>Repas midi</th>
+              <th>Nuitée </th>
+              <th>Etape</th>
+              <th>Km </th>
+              <th>Situation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><label name="repas" /></td>
+              <td><label name="nuitee" /></td>
+              <td> <label name="etape" /></td>
+              <td> <label name="km" /></td>
+              <td>
+                <select class="col-sm-6 form-select" aria-label="Choisir un état" name="situ">
+                  <option selected>Choisir un état </option>
+                  <option value="E">Enregistré</option>
+                  <option value="V">Validé</option>
+                  <option value="R">Remboursé</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          
+        <hr class="my-4">
 
-				// Boucle sur tous le jeu d'enregistrement
-				while ($ligne != false)
-				{
-					// On stocke les données de la classe dans des variables
-					$num = $ligne["id"]; // numéro ID
-					$nomVisiteur = $ligne["nom"]; // Nom visteur
-					if ($ligne["compta"] != 'OUI')
-						echo "<option value='$num'>$nomVisiteur</option>";
+        <h4 class="mb-3">Frais hors forfait</h4>
 
-					// Lecture de la ligne suivante dans le jeu d'enregistrements
-					$ligne = $result->fetch();
-				}
-			?>
-		</select>			
-		<label class="titre">Mois :</label>
-		<input class="zone" type="text" name="dateValid" size="12" />
-		<p class="titre" />
-		<div style="clear:left;">
-			<h2>Frais au forfait </h2>
-		</div>
-		<table style="color:white;">
-			<tr>
-				<th>Repas midi</th>
-				<th>Nuitee </th>
-				<th>Etape</th>
-				<th>Km </th>
-				<th>Situation</th>
-			</tr>
-			<tr align="center">
-				<td width="80" >
-					<input type="text" size="3" name="repas"/>
-				</td>
-				<td width="80"><input  type="text" size="3" name="nuitee"/></td> 
-				<td width="80"> <input type="text" size="3" name="etape"/></td>
-				<td width="80"> <input type="text" size="3" name="km" /></td>
-				<td width="80"> 
-					<select size="3" name="situ">
-						<option value="E">Enregistre</option>
-						<option value="V">Valide</option>
-						<option value="R">Rembourse</option>
-					</select>
-				</td>
-			</tr>
-		</table>
-		
-		<p class="titre" /><div style="clear:left;"><h2>Hors Forfait</h2></div>
-		<table style="color:white;">
-			<tr><th>Date</th><th>Libelle </th><th>Montant</th><th>Situation</th></tr>
-			<tr align="center"><td width="100" ><input type="text" size="12" name="hfDate1"/></td>
-				<td width="220"><input type="text" size="30" name="hfLib1"/></td> 
-				<td width="90"> <input type="text" size="10" name="hfMont1"/></td>
-				<td width="80"> 
-					<select size="3" name="hfSitu1">
-						<option value="E">Enregistre</option>
-						<option value="V">Valide</option>
-						<option value="R">Rembourse</option>
-					</select></td>
-				</tr>
-		</table>		
-		<p class="titre"></p>
-		<div class="titre">Nb Justificatifs</div>
-		<input type="text" class="zone" size="4" name="hcMontant"/>		
-		<p class="titre" /><label class="titre">&nbsp;</label>
+        <table class="table table-bordered">
+          <thead class="table-primary">
+            <tr class="text-center">
+              <th>Date</th>
+              <th>Libellé </th>
+              <th>Montant</th>
+              <th>Situation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><label name="hfDate1" /></td>
+              <td><label name="hfLib1" /></td>
+              <td><label name="hfMont1" /></td>
+              <td>
+                <select class="col-sm-6 form-select" aria-label="Choisir un état" name="hfSitu1">
+                  <option selected>Choisir un état </option>
+                  <option value="E">Enregistré</option>
+                  <option value="V">Validé</option>
+                  <option value="R">Remboursé</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <hr class="my-4">
 
-		<!-- Envoie formulaire -->
-		<input class="zone"type="reset" />
-		<input class="zone"type="submit" />
-	</form>
-	</div>
-</div>
+        <div class="col-sm-2">
+          <label for="hcMontant" class="form-label">Nb Justificatifs</label>
+          <input type="text" class="form-control" id="hcMontant" value="" >
+        </div>
+
+        <div class="d-flex justify-content-center mb-4 fixed-bottom">
+          <input class="btn btn-danger me-3 w-25" type="reset" />
+          <input class="btn btn-success me-3 w-75" type="submit" />
+        </div>
+      </form>
+    </div>
+  </main>
 </body>
 </html>

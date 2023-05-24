@@ -1,57 +1,8 @@
-﻿-- -- phpMyAdmin SQL Dump
--- -- version 3.3.9
--- -- http://www.phpmyadmin.net
--- --
--- -- Serveur: localhost
--- --
--- -- Version de PHP: 5.3.5
-
--- -- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
--- /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
--- /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
--- /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
--- /*!40101 SET NAMES utf8 */;
-
--- --------------------------------------------------------
-
-CREATE DATABASE GSB;
-
---
--- Base de données: `gsb_frais`
+﻿--
+-- Structure des tables de Comptes
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `FraisForfait`
---
-
-CREATE TABLE IF NOT EXISTS `FraisForfait` (   
-  `id` char(3) NOT NULL,
-  `libelle` char(20) DEFAULT NULL,
-  `montant` decimal(5,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Etat`
---
-
-CREATE TABLE IF NOT EXISTS `Etat` (
-  `id` char(2) NOT NULL,
-  `libelle` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Visiteur`
---
+CREATE DATABASE compte;
 
 CREATE TABLE IF NOT EXISTS `Visiteur` (
   `id` char(4) NOT NULL,
@@ -63,15 +14,50 @@ CREATE TABLE IF NOT EXISTS `Visiteur` (
   `cp` char(5) DEFAULT NULL,
   `ville` char(30) DEFAULT NULL,
   `dateEmbauche` date DEFAULT NULL,
-  `compta` VARCHAR(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `Comptable` (
+  `id` char(4) NOT NULL,
+  `nom` char(30) DEFAULT NULL,
+  `prenom` char(30)  DEFAULT NULL, 
+  `login` char(20) DEFAULT NULL,
+  `mdp` char(20) DEFAULT NULL,
+  `adresse` char(30) DEFAULT NULL,
+  `cp` char(5) DEFAULT NULL,
+  `ville` char(30) DEFAULT NULL,
+  `dateEmbauche` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `FicheFrais`
+-- Structure des tables de Infos
 --
+
+CREATE DATABASE Infos;
+
+CREATE TABLE IF NOT EXISTS `Etat` (
+  `id` char(2) NOT NULL,
+  `libelle` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `FraisForfait` (   
+  `id` char(3) NOT NULL,
+  `libelle` char(20) DEFAULT NULL,
+  `montant` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+
+--
+-- Structure des tables de Saisies
+--
+
+CREATE DATABASE Saisies;
 
 CREATE TABLE IF NOT EXISTS `fichefrais` (
   `idVisiteur` char(4) NOT NULL,
@@ -85,14 +71,7 @@ CREATE TABLE IF NOT EXISTS `fichefrais` (
   FOREIGN KEY (`idVisiteur`) REFERENCES Visiteur(`id`)
 ) ENGINE=InnoDB;
 
-
--- --------------------------------------------------------
-
---
--- Structure de la table `LigneFraisForfait`
---
-
-CREATE TABLE IF NOT EXISTS `LigneFraisForfait` (
+CREATE TABLE IF NOT EXISTS `SaisiesLigneFraisForfait` (
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `idFraisForfait` char(3) NOT NULL,
@@ -102,27 +81,18 @@ CREATE TABLE IF NOT EXISTS `LigneFraisForfait` (
   FOREIGN KEY (`idFraisForfait`) REFERENCES FraisForfait(`id`)
 ) ENGINE=InnoDB;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `LigneFraisHorsForfait`
---
-
 CREATE TABLE IF NOT EXISTS `LigneFraisHorsForfait` (
-  `id` int(11) NOT NULL auto_increment,
-  `idVisiteur` char(4) NOT NULL,
+  `id` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `libelle` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `montant` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (`idVisiteur`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
+  FOREIGN KEY (`id`, `mois`) REFERENCES FicheFrais(`idVisiteur`, `mois`)
 ) ENGINE=InnoDB;
 
-/*AJOUT*/
--- --------------------------------------------------------
+-- Edit de la table (ajout des UID)
 
---
--- Structure de la table `Periode`
---
-
+ALTER TABLE compte.visiteur
+ADD uid INT AUTO_INCREMENT,
+ADD INDEX (uid);
