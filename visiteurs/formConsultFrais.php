@@ -1,12 +1,16 @@
+<?php
+session_start();
+?>
 <html>
-
 <head>
   <!-- <link href="test.css"> -->
-  <title>Suivi des frais de visite</title>
+  <link rel="shortcut icon" href="../images/gsb.png" type="image/x-icon">
+  <title>Consult frais</title>
   <style type="text/css">
     body {
-      background-color: white;
-      color:5599EE;
+      background-color: #6A9DEC;
+      color:white;
+      font-family: arial;
     } 
     .titre {
       width: 180;
@@ -16,16 +20,21 @@
 
     .zone {
       float: left;
-      color: 7091BB
+      color: white;
+    }
+
+    .bloc{
+      padding: 10px;
+      border-radius: 10px;
     }
 
   </style>
 </head>
 
 <body>
-  <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
+  <div name="gauche" style="clear:left;float:left;width:18%; height:100%;">
     <div name="coin" style="height:10%;text-align:center;">
-      <a href="../index.html"><img src="../images/gsb.png" width="100" height="60" /></a>
+      <a href="../PHP/accueil/deconnection.php"><img src="../images/gsb.png" width="100" height="60" /></a>
     </div>
     <div name="menu">
       <h2>Outils</h2>
@@ -47,14 +56,20 @@
       <h1>Suivi de remboursement des Frais</h1>
     </div>
     <div name="bas" style="margin : 10 2 2 2;clear:left;background-color:77AADD;color:white;height:88%;">
-      <form name="formConsultFrais" method="post" action="../PHP/enregSaisieFrais.php">
+
+    <!-- PERIODE  -->
+    <div class="bloc">
+      <form name="formConsultFrais" method="post" action="../PHP/visiteurs/afficheSaisieVisiteur.php">
         <h1> Periode </h1>
-        <label class="titre">Mois/Annee :</label> <input class="zone" type="text" name="dateConsult" size="12" />
+        <label class="titre" style="color: black; font-weight: bold; text-align:center;">Mois/Annee :</label> <input class="zone" type="text" name="dateConsult" size="5" />&nbsp;
+        <input type="submit" value="rechercher">
+      </form>
+
         <p class="titre">
         <div style="clear:left;">
           <h2>Frais au forfait </h2>
         </div>
-        <table style="color:white; border:1">
+        <table style="color:black; border:1">
           <tr>
             <th>Repas midi</th>
             <th>Nuitee </th>
@@ -65,7 +80,7 @@
             <th>Remboursement</th>
           </tr>
           <tr text-align="center">
-            <td width="80"><label size="3" name="repas"></td>
+            <td width="80"></td>
             <td width="80"><label size="3" name="nuitee"></td>
             <td width="80"> <label size="3" name="etape"></td>
             <td width="80"> <label size="3" name="km"></td>
@@ -79,7 +94,7 @@
         <div style="clear:left;">
           <h2>Hors Forfait</h2>
         </div>
-        <table style="color:white; border:1">
+        <table style="color:black; border:1">
           <tr>
             <th>Date</th>
             <th>Libelle </th>
@@ -95,9 +110,6 @@
             <td width="80"> <label size="3" name="hfDateOper1"></td>
           </tr>
         </table>
-        <p class="titre"></p>
-        <div class="titre">Nb Justificatifs</div><input type="text" class="zone" size="4" name="hcMontant" />
-      </form>
     </div>
   </div>
 </body>

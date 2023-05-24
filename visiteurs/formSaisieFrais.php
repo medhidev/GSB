@@ -38,9 +38,9 @@
   <title>Gestion des frais de visite</title>
 </head>
 
-<body style="font-family: Arial;">
+<body style="font-family: Arial; background-color: #6A9DEC;">
   <!-- GAUCHE-->
-  <div name="gauche" style="clear:left;float:left;width:18%; background-color:white; height:100%;">
+  <div name="gauche" style="clear:left;float:left;width:18%; height:100%;">
     <div name="coin" style="height:10%;margin-top: 50px;">
       <a href="../PHP/accueil/deconnection.php"><img src="../images/gsb.png" width="100" height="60"></a>
     </div>
