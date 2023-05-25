@@ -1,46 +1,17 @@
-# Projet GSB
+# Projet GSB (Galaxy Swiss Bourdin)
 
-## Interface Userfriendly (Ciran)
+entreprise fictive spécialisée en pharmacie
+avec un site qui propose un pannel de gestion de commande des visiteurs
+gérer et valider par un comptable.
 
-* Harmoniser l'Interface de connection (CSS)
-* Amélioration des interfaces compta / utilisateur (CSS/HTML)
+# chose à faire encore
 
-## TODO Gestion BDD (Medhi)
+## Page Accueil
+-
 
-* Script de verfification d'identitée (PHP)
-### Comptes de connection
-Utilisateur Lambda (*Voir Login & Mot de passe BDD*)
+## Page de saisie des frais
+- réduire la taille des bouton envoyer et reinitialiser
 
-* Compte pour les comptables & Admin (même que BDD pour les tests)*
-> Login: *MedhiGSB*
-> Mdp: *1mot2passCQRtkt*
-
-> Login: *CiranGSB*
-> Mdp: *CAmoiCEMDP*
-
-> Login *MichaelGSB*
-> Mdp: *1CompteReseauNul*
-
-* Gestion des droits & Accès à la BDD (SQL)
-
-### Comptes d'accès Base de données
-
-__Utilisateur AdminGSB - Accès toutes les tables__
-> Utilisateur: *AdminGSB*
-> Mdp: *adminpassword*
-> Droits: *INSERT, SELECT, UPDATE, DELETE*
-
-__Utilisateur UserGSB - Accès table visiteur__
-> Utilisateur: *UserGSB*
-> Mdp: *gsbpassword*
-> Droits: *INSERT, SELECT, UPDATE, DELETE*
-
-* Script de verification de Mdp & les messages qui vont avec (Js)
-* Liaison des pages entres elles (faire shéma si nécessaire) (HTML)
-* (Faire un script de récupération des données d'utilisateur)
-
-## Hebergement & Configuration (Michael (Judas))
-
-* Hebergement et configuration sur un poste en local
-* Gestion des accès à distance via Filezilla
-* Installation des différents services (PHP/ftp/PHPMyAdmin)
+## Page de consultation des frais
+- refaire le bouton de validation
+- mettre le fond même couleur que la page saisie des frais

@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+//Valeur par défaut Champ Vide -> éviter des message d'erreur
+$_SESSION["dateSearch"] = "__.__.__";
+$_SESSION["remboursement"] = "____";
+
+$_SESSION["REP"] = "____";
+$_SESSION["NUI"] = "____";
+$_SESSION["ETP"] = "____";
+$_SESSION["KM"] = "____";
+
+$_SESSION["LibelleSearch"] = "____";
+$_SESSION["MontantSearch"] = "____";
+$_SESSION["Situation"] = "____";
+$_SESSION["LibelleSearch"] = "____";
+
+$_SESSION["Justificatif"] = "____";
+?>
 <html>
 
 <head>
@@ -16,7 +35,7 @@
     <div class="d-flex flex-column w-25 flex-shrink-0 p-3 text-bg-dark">
       <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <a href="../PHP/deconnection.php"><img class="mb-4" src="../images/gsb.png" alt="" width="52" height="37"></a>
-        <span class="fs-4">&nbsp;&nbsp;&nbsp;Gestion des Frais</span>
+        <span class="fs-4">Gestion des Frais</span>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
@@ -36,13 +55,16 @@
     </div>
 
     <div class="mw-100 w-75 p-3 text-bg-info">
-      <form name="formConsultFrais" method="post" action="chercheFrais.php">
+      <form name="formConsultFrais" method="post" action="../PHP/visiteurs/envoieSasieVisiteur.php">
         <div class="row g-3">
       
         <div class="col-sm-6">
           <label for="dateConsult" class="form-label">Période</label>
-          <input type="text" class="form-control" id="dateConsult" placeholder="MM/AAAA" value="" readonly>
+          <input type="text" class="form-control" id="dateConsult" placeholder="DD.MM.AAAA">
+          <input type="submit" class="form-control" id="searchConsultFrais" value="Rechercher">
         </div>
+      </form>
+
     
         <hr class="my-4">
 
@@ -61,13 +83,13 @@
           </thead>
           <tbody>
             <tr>
-              <td><label name="repas" /></td>
-              <td><label name="nuitee" /></td>
-              <td> <label name="etape" /></td>
-              <td> <label name="km" /></td>
-              <td> <label name="situation" /></td>
-              <td> <label name="dateOper" /></td>
-              <td> <label name="dateOper" /></td>
+              <td> <?php echo $_SESSION["REP"]; ?></td>
+              <td> <?php echo $_SESSION["NUI"]; ?></td>
+              <td> <?php echo $_SESSION["ETP"]; ?></td>
+              <td> <?php echo $_SESSION["KM"]; ?></td>
+              <td> <?php echo $_SESSION["NUI"]; ?></td>
+              <td> <?php echo $_SESSION["dateSearch"]; ?></td>
+              <td> <?php echo $_SESSION["remboursement"].' €'; ?></td>
             </tr>
           </tbody>
         </table>
@@ -79,20 +101,20 @@
         <table class="table table-bordered">
           <thead class="table-primary">
             <tr class="text-center">
-              <th>Date</th>
+              <th>Date opération</th>
               <th>Libellé </th>
               <th>Montant</th>
               <th>Situation</th>
-              <th>Date opération</th>
+              <!-- <th>Date opération</th> -->
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><label size="12" name="hfDate1" /></td>
-              <td><label size="30" name="hfLib1" /></td>
-              <td><label size="10" name="hfMont1" /></td>
-              <td> <label size="3" name="hfSitu1" /></td>
-              <td> <label size="3" name="hfDateOper1" /></td>
+              <td> <?php echo $_SESSION["dateSearch"]; ?></td>
+              <td> <?php echo $_SESSION["NUI"]; ?></td>
+              <td> <?php echo $_SESSION["NUI"]; ?></td>
+              <td> <?php echo $_SESSION["NUI"]; ?></td>
+              <!-- <td> <?php echo $_SESSION["dateSearch"]; ?></td> -->
             </tr>
           </tbody>
         </table>
@@ -101,9 +123,8 @@
 
         <div class="col-sm-2">
           <label for="hcMontant" class="form-label">Nb Justificatifs</label>
-          <input type="text" class="form-control" id="hcMontant" value="" readonly>
+          <input type="text" class="form-control" id="hcMontant" value="<?php echo $_SESSION["Justificatif"];?>" readonly>
         </div>
-      </form>
     </div>
   </main>
 </body>

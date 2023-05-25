@@ -56,7 +56,6 @@ $idREP = $ligneREP["id"];
 // Montant Forfait
 $_SESSION["quantite"] = $nuit*$ligneNUI["montant"] +
 $etape*$ligneETP["montant"] + $km*$ligneKM["montant"] + $repasMidi*$ligneREP["montant"];
-$montant = $_SESSION["quantite"];
 
 /*  -------------------------------
             Insertion BDD
@@ -82,7 +81,8 @@ try {
 // Variables Hors Forfait
 $libelle = $_POST["libelle"];
 $date = $_SESSION["date"];
-$montant += $_POST["montant"];
+$_SESSION["quantite"] += $_POST["montant"];
+$montant = $_SESSION["quantite"];
 /*  -------------------------------
             Insertion BDD
 ------------------------------- */
